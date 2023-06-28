@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            font-size: 17px;
+            background: transparent;
+        }
+
+        #myVideo {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @font-face {
+            font-family: 'BebasNeue';
+            src: url('BebasNeue-Regular.ttf');
+        }
+
+        .box .sr {
+            position: absolute;
+            z-index: 999;
+            top: 443px;
+            left: 820px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 25px;
+        }
+
+        .box .dailysr {
+            position: absolute;
+            z-index: 999;
+            top: 458px;
+            left: 928px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 14px;
+        }
+
+        .box .rank {
+            position: absolute;
+            z-index: 999;
+            top: 443px;
+            left: 1125px;
+            font-family: 'BebasNeue';
+            color: #F5B227;
+            font-size: 25px;
+        }
+
+        .box .dailyrank {
+            position: absolute;
+            z-index: 999;
+            top: 458px;
+            left: 1200px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="boxx" id="boxx">
+            <div class='sr'>
+                <h1 style='display:inline;'>99999</h1>
+            </div>
+            <div class='dailysr'>
+                <h1 style='display:inline;'>
+                    <div id='srarrow' style="display:inline-block;"></div> 100
+                </h1>
+            </div>
+            <div class='rank'>
+                <h1 style='display:inline;'>250</h1>
+            </div>
+            <div class='dailyrank'>
+                <h1 style='display:inline;'>
+                    <div id='rankarrow' style="display:inline-block;"></div> 249
+                </h1>
+            </div>
+        </div>
+        <div style="z-index:1;">
+            <video autoplay muted loop playsinline id="myVideo" >
+                <source src="./HORIZONTAL TOP250_WEBM_1.webm" type="video/webm">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // SR ARROW
+        if (Math.sign(2) == -1) {
+            document.getElementById("srarrow").innerHTML = "<i class='fa fa-solid fa-caret-up' style='color: #73ff00;'></i>";
+        } else if (Math.sign(2) == 1) {
+            document.getElementById("srarrow").innerHTML = "<i class='fa fa-solid fa-caret-down' style='color: #db0000;'></i>";
+        } else {
+            document.getElementById("srarrow").innerHTML = "";
+        }
+        // Rank ARROW
+        if (Math.sign(2) == -1) {
+            document.getElementById("rankarrow").innerHTML = "<i class='fa fa-solid fa-caret-up' style='color: #73ff00;'></i>";
+        } else if (Math.sign(2) == 1) {
+            document.getElementById("rankarrow").innerHTML = "<i class='fa fa-solid fa-caret-down' style='color: #db0000;'></i>";
+        } else {
+            document.getElementById("rankarrow").innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>

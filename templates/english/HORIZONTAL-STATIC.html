@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="{{url_for('static',filename='fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css')}}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            font-size: 17px;
+            background: transparent;
+        }
+
+        #myVideo {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @font-face {
+            font-family: 'BebasNeue';
+            src: url("{{url_for('static',filename='fonts/BebasNeue-Regular.ttf')}}");
+        }
+
+        .box .sr {
+            position: absolute;
+            z-index: 999;
+            top: 443px;
+            left: 820px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 25px;
+        }
+
+        .box .dailysr {
+            position: absolute;
+            z-index: 999;
+            top: 458px;
+            left: 930px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 14px;
+        }
+
+        .box .rank {
+            position: absolute;
+            z-index: 999;
+            top: 443px;
+            left: 1125px;
+            font-family: 'BebasNeue';
+            color: #F5B227;
+            font-size: 25px;
+        }
+
+        .box .dailyrank {
+            position: absolute;
+            z-index: 999;
+            top: 458px;
+            left: 1200px;
+            font-family: 'BebasNeue';
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+    {{ turbo() }}
+</head>
+
+<body onload="loadArrows({{ dailysr }},{{ dailyrank }})">
+    <div class="box" id="box">
+        <div class="boxx" id="boxx">
+            <div class='sr'>
+                <h1 style='display:inline;' id='sr'>{{ sr }}</h1>
+            </div>
+            <div class='dailysr'>
+                <h1 style='display:inline;' id='dailysr'>
+                    {{ dailysr }}
+                </h1>
+            </div>
+            <div class='rank'>
+                <h1 style='display:inline;' id='rank'>{{ rank }}</h1>
+            </div>
+            <div class='dailyrank'>
+                <h1 style='display:inline;' id='dailyrank'>
+                    {{ dailyrank }}
+                </h1>
+            </div>
+        </div>
+        <div style="z-index:1;">
+            <img src="{{url_for('static',filename='files/HORIZONTAL_TOP250_PNG_1.png')}}" alt='horizontal-overlay'
+                border='0'>
+        </div>
+    </div>
+
+    <script>
+        // SR ARROW
+        function loadArrows(dailysr, dailyrank) {
+            var green = "<i class='fa fa-solid fa-caret-up' style='color: #73ff00;'></i>"
+            var red = "<i class='fa fa-solid fa-caret-down' style='color: #db0000;'></i>"
+            if (Math.sign(dailysr) == 1) {
+                document.getElementById("dailysr").insertAdjacentHTML('afterbegin', green);
+            } else if (Math.sign(dailysr) == -1) {
+                document.getElementById("dailysr").insertAdjacentHTML('afterbegin', red);
+            } else {
+                document.getElementById("dailysr").innerHTML = "&nbsp;&nbsp;- -";
+            }
+            // Rank ARROW
+            if (Math.sign(dailyrank) == 1) {
+                document.getElementById("dailyrank").insertAdjacentHTML('afterbegin', green);
+            } else if (Math.sign(dailyrank) == -1) {
+                document.getElementById("dailyrank").insertAdjacentHTML('afterbegin', red);
+            } else {
+                document.getElementById("dailyrank").innerHTML = "&nbsp;&nbsp;- -";
+            } return 0;
+        } 
+    </script>
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonResponse = JSON.parse(this.responseText);
+                    document.getElementById("sr").innerHTML = jsonResponse['sr'];
+                    document.getElementById("dailysr").innerHTML = "&nbsp;" + jsonResponse['dailysr'];
+                    document.getElementById("rank").innerHTML = jsonResponse['rank'];
+                    document.getElementById("dailyrank").innerHTML = "&nbsp;" + jsonResponse['dailyrank'];
+                    return loadArrows(jsonResponse['dailysr'], jsonResponse['dailyrank']);
+                }
+            };
+            xhttp.overrideMimeType("application/json");
+            xhttp.open("GET", "/backend-data/{{gamertag}}", true);
+            xhttp.send();
+        } setInterval(loadData, 30000);
+    </script>
+
+</body>
+
+</html>
