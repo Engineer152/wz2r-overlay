@@ -101,17 +101,17 @@
 
     <script>
         // SR ARROW
-        if (Math.sign(2) == -1) {
+        if (Math.sign(-2) == 1) {
             document.getElementById("srarrow").innerHTML = "<i class='fa fa-solid fa-caret-up' style='color: #73ff00;'></i>";
-        } else if (Math.sign(2) == 1) {
+        } else if (Math.sign(-2) == -1) {
             document.getElementById("srarrow").innerHTML = "<i class='fa fa-solid fa-caret-down' style='color: #db0000;'></i>";
         } else {
             document.getElementById("srarrow").innerHTML = "";
         }
         // Rank ARROW
-        if (Math.sign(2) == -1) {
+        if (Math.sign(2) == 1) {
             document.getElementById("rankarrow").innerHTML = "<i class='fa fa-solid fa-caret-up' style='color: #73ff00;'></i>";
-        } else if (Math.sign(2) == 1) {
+        } else if (Math.sign(2) == -1) {
             document.getElementById("rankarrow").innerHTML = "<i class='fa fa-solid fa-caret-down' style='color: #db0000;'></i>";
         } else {
             document.getElementById("rankarrow").innerHTML = "";
