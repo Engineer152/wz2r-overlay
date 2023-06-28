@@ -12,8 +12,6 @@
 
         body {
             margin: 0;
-            font-family: Arial;
-            font-size: 17px;
             background: transparent;
         }
 
@@ -153,6 +151,22 @@
             xhttp.send();
         } setInterval(loadData, 30000);
     </script>
+    <!-- <script>
+        const getFontSize = (textLength) => {
+            const baseSize = 25
+            if (textLength >= baseSize) {
+                textLength = baseSize - 2
+            }
+            const fontSize = baseSize - textLength
+            return `${fontSize/2}vw`
+        }
+
+        const boxes = document.querySelectorAll('.gamertag h1')
+
+        boxes.forEach(box => {
+            box.style.fontSize = getFontSize(box.textContent.length)
+        })
+    </script> -->
 
 </body>
 
