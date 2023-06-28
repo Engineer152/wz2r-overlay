@@ -18,7 +18,7 @@ def overlay(language,type,animated,gamertag):
 
     data = get_ranked_stats(gamertag)
 
-    return render_template(f"{language}/{type}-{animated}.html", gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
+    return render_template(f"{language}/{type.upper()}-{animated.upper()}.html", gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
 
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
