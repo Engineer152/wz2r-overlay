@@ -29,7 +29,25 @@
             src: url("{{url_for('static',filename='fonts/BebasNeue-Regular.ttf')}}");
         }
 
-        .box .gamertag {
+        .box {
+            text-align: center;
+        }
+
+        .symrank {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 490px;
+            left: 528px;
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 50px;
+            font-family: 'BebasNeue';
+            color: black;
+            font-size: 15px;
+        }
+
+        .gamertag {
             position: absolute;
             z-index: 999;
             top: 443px;
@@ -39,7 +57,7 @@
             font-size: 25px;
         }
 
-        .box .sr {
+        .sr {
             position: absolute;
             z-index: 999;
             top: 443px;
@@ -49,21 +67,21 @@
             font-size: 25px;
         }
 
-        .box .dailysr {
+        .dailysr {
             position: absolute;
             z-index: 999;
             top: 458px;
-            left: 1025px;
+            left: 1030px;
             font-family: 'BebasNeue';
             color: white;
             font-size: 14px;
         }
 
-        .box .rank {
+        .rank {
             position: absolute;
             z-index: 999;
             top: 443px;
-            left: 1200px;
+            left: 1225px;
             font-family: 'BebasNeue';
             color: #F5B227;
             font-size: 25px;
@@ -73,7 +91,7 @@
             position: absolute;
             z-index: 999;
             top: 458px;
-            left: 1275px;
+            left: 1300px;
             font-family: 'BebasNeue';
             color: white;
             font-size: 14px;
@@ -84,6 +102,9 @@
 <body onload="loadArrows({{ dailysr }},{{ dailyrank }})">
     <div class="box" id="box">
         <div class="boxx" id="boxx">
+            <div class='symrank'>
+                <h1 style='display:inline;' id="symrank">{{ rank }}</h1>
+            </div>
             <div class='gamertag'>
                 <h1 style='display:inline;'>{{ gamertag }}</h1>
             </div>
@@ -105,7 +126,7 @@
             </div>
         </div>
         <div style="z-index:1;">
-            <img src="{{url_for('static',filename='files/LINE_TOP250_PNG_1.png')}}" alt='horizontal-overlay' border='0'>
+            <img src="{{url_for('static',filename='files/LINE TOP250_PNG_5.png')}}" alt='horizontal-overlay' border='0'>
         </div>
     </div>
 

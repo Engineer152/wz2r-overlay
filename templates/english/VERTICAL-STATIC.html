@@ -29,6 +29,24 @@
             src: url("{{url_for('static',filename='fonts/BebasNeue-Regular.ttf')}}");
         }
 
+        .box {
+            text-align: center;
+        }
+
+        .symrank {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 535px;
+            left: 930px;
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 75px;
+            font-family: 'BebasNeue';
+            color: black;
+            font-size: 35px;
+        }
+
         .box .gamertag {
             position: absolute;
             z-index: 999;
@@ -84,6 +102,9 @@
 <body onload="loadArrows({{ dailysr }},{{ dailyrank }})">
     <div class="box" id="box">
         <div class="boxx" id="boxx">
+            <div class='symrank'>
+                <h1 style='display:inline;' id="symrank">{{ rank }}</h1>
+            </div>
             <div class='sr'>
                 <h1 style='display:inline;' id="sr">{{ sr }}</h1>
             </div>
@@ -102,7 +123,7 @@
             </div>
         </div>
         <div style="z-index:1;">
-            <img src="{{url_for('static',filename='files/VERTICAL TOP250_PNG_1.png')}}" alt='horizontal-overlay' border='0'>
+            <img src="{{url_for('static',filename='files/VERTICAL TOP250_PNG_4.png')}}" alt='horizontal-overlay' border='0'>
         </div>
     </div>
 
