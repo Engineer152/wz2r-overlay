@@ -28,5 +28,4 @@ def data(gamertag):
     data = get_ranked_stats(gamertag.lower())
     return data
 
-# app = WsgiToAsgi(app)
-app.run()
+app = WsgiToAsgi(app)
