@@ -18,14 +18,15 @@ def index():
 def overlay(language,type,animated,*,gamertag):
     data = get_ranked_stats(gamertag)
     path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
-    if exists(path_file):
+    if exists("./templates/"+path_file):
         return render_template(path_file, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
     else:
-        return render_template("index.html")
+        return render_template("error.html")
 
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
     data = get_ranked_stats(gamertag.lower())
     return data
 
-app = WsgiToAsgi(app)
+# app = WsgiToAsgi(app)
+app.run()
