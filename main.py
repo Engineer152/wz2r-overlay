@@ -29,3 +29,4 @@ def data(gamertag):
     return data
 
 app = WsgiToAsgi(app)
+# ALWAYS CHANGE THIS BACK!!!!!
