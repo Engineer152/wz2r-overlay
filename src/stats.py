@@ -13,6 +13,7 @@ def live_data(gamertag=""):
     for p in players:
         if p['gamertag'].lower() == gamertag.lower():
             return p['skillRating'], p['rank']+1
+    return None
 
 def get_ranked_stats(gamertag=""):
     data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
@@ -25,5 +26,4 @@ def get_ranked_stats(gamertag=""):
     else:
         try: data['sr'], data['rank'] = live_data(gamertag)
         except: pass
-        
     return data
