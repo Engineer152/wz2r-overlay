@@ -4,6 +4,7 @@ from turbo_flask import Turbo
 import threading
 import time
 import os
+from os.path import exists
 import uvicorn
 from asgiref.wsgi import WsgiToAsgi
  
@@ -14,15 +15,18 @@ def index():
     return render_template("index.html")
 
 @app.route("/wz2r/top-250/<language>/<type>/<animated>/<gamertag>", methods=['GET'])
-def overlay(language,type,animated,gamertag):
-
+def overlay(language,type,animated,*,gamertag):
     data = get_ranked_stats(gamertag)
-
-    return render_template(f"{language}/{type.upper()}-{animated.upper()}.html", gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
+    path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
+    if exists(path_file):
+        return render_template(path_file, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
+    else:
+        return render_template("index.html")
 
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
     data = get_ranked_stats(gamertag.lower())
     return data
 
-app = WsgiToAsgi(app)
+# app = WsgiToAsgi(app)
+app.run()
