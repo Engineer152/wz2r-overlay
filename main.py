@@ -10,6 +10,9 @@ from asgiref.wsgi import WsgiToAsgi
  
 app = Flask(__name__)
 
+# Change Version to update All
+version = "1.00"
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -19,13 +22,14 @@ def overlay(language,type,animated,*,gamertag):
     data = get_ranked_stats(gamertag)
     path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
     if exists("./templates/"+path_file):
-        return render_template(path_file, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
+        return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
     else:
         return render_template("error.html")
 
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
     data = get_ranked_stats(gamertag.lower())
+    data['version'] = version
     return data
 
 app = WsgiToAsgi(app)
