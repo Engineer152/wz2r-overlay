@@ -12,7 +12,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.02"
+version = "1.03"
 
 @app.route("/")
 def index():
