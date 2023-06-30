@@ -50,11 +50,20 @@
         .gamertag {
             position: absolute;
             z-index: 999;
+            text-align:center;
+            align-content:center;
+            line-height: 65px;
             top: 443px;
-            left: 625px;
+            left: 620px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 205px;
+            height: 65px;
             font-family: 'BebasNeue';
             color: white;
-            font-size: 25px;
+            font-size: 18px;
         }
 
         .sr {
@@ -105,11 +114,11 @@
             <div class='symrank'>
                 <h1 style='display:inline;' id="symrank">{{ rank }}</h1>
             </div>
-            <div class='gamertag'>
+            <div class='gamertag' id="gamertag" >
                 <h1 style='display:inline;'>{{ gamertag }}</h1>
             </div>
             <div class='sr'>
-                <h1 style='display:inline;' id="sr">{{ sr }}</h1>
+                <h1 style='display:inline;' id='sr'>{{ sr }}</h1>
             </div>
             <div class='dailysr'>
                 <h1 style='display:inline;' id='dailysr'>
@@ -126,7 +135,8 @@
             </div>
         </div>
         <div style="z-index:1;">
-            <img src="{{url_for('static',filename='files/LINE TOP250_PNG_5.png')}}" alt='horizontal-overlay' border='0'>
+            <img src="{{url_for('static',filename='files/LINE TOP250_PNG_5.png')}}" alt='horizontal-overlay'
+                border='0'>
         </div>
     </div>
 
@@ -174,23 +184,26 @@
             xhttp.send();
         } setInterval(loadData, 30000);
     </script>
-    <!-- <script>
-        const getFontSize = (textLength) => {
-            const baseSize = 25
-            if (textLength >= baseSize) {
-                textLength = baseSize - 2
+    <script>
+        const getSize = (textLength) => {
+            const baseSize = 18
+            const baseLength = 13
+            if (baseLength < textLength) {
+                fontSize = baseSize - (textLength - baseLength)
+                topDist = 420 + 2*(textLength - baseLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            } else if (baseLength > textLength) {
+                fontSize = baseSize + (baseLength - textLength)
+                topDist = 420 - 2*(baseLength - textLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
             }
-            const fontSize = baseSize - textLength
-            return `${fontSize/2}vw`
         }
-
         const boxes = document.querySelectorAll('.gamertag h1')
-
         boxes.forEach(box => {
-            box.style.fontSize = getFontSize(box.textContent.length)
+            var newSize = getSize(box.textContent.length)
+            document.getElementById("gamertag").style.fontSize = newSize[0]
         })
-    </script> -->
-
+    </script>
 </body>
 
 </html>
