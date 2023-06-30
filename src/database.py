@@ -9,5 +9,5 @@ def add_user(user):
     doc = collection.find_one({"season": "season-4" })
     if user not in doc['users']:
         doc['users'] = doc['users'].append()
-    collection.replace_one({"season":"season-4"},doc)
+        collection.replace_one({"season":"season-4"},doc)
     return
