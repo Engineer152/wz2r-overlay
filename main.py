@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from src.stats import get_ranked_stats
+from src.database import add_user
 from turbo_flask import Turbo
 import threading
 import time
@@ -11,7 +12,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.01"
+version = "1.02"
 
 @app.route("/")
 def index():
@@ -28,6 +29,8 @@ def overlay(language,type,animated,*,gamertag):
 
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
+    try: add_user(gamertag)
+    except: pass
     data = get_ranked_stats(gamertag.lower())
     data['version'] = version
     return data
