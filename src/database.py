@@ -7,7 +7,9 @@ qsbpartner = pymongo.MongoClient(f"mongodb+srv://quickstatsbot:{password}@qsbpar
 def add_user(user):
     collection=qsbpartner.WZRanked.Users
     doc = collection.find_one({"season": "season-4" })
-    if user not in doc['users']:
-        doc['users'] = doc['users'].append()
+    current = doc['users']
+    if user not in current:
+        current.append(str(user))
+        doc['users'] = current
         collection.replace_one({"season":"season-4"},doc)
     return
