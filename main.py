@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from src.stats import get_ranked_stats
 from src.database import add_user
 from turbo_flask import Turbo
@@ -12,18 +12,33 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.04"
+version = "1.05"
+
+# Standard Colors
+bg_color = "#F5B227"
+name_color = "white"
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/wz2r/top-250/<language>/<type>/<animated>/<gamertag>", methods=['GET'])
-def overlay(language,type,animated,*,gamertag):
+def overlay(language,type,animated,gamertag):
     data = get_ranked_stats(gamertag)
     path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
     if exists("./templates/"+path_file):
-        return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
+        if animated == "acustom" or "scustom":
+            try: bg_color = request.args.get('bg_color', default="#F5B227")
+            except: pass
+            if bg_color.startswith('#'):
+                pass
+            else:
+                bg_color="#"+bg_color
+            try: name_color = request.args.get('name_color',default="white")
+            except: pass
+            return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'],bg_color = bg_color, name_color = name_color)
+        else:
+            return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
     else:
         return render_template("error.html")
 
@@ -36,4 +51,4 @@ def data(gamertag):
     return data
 
 app = WsgiToAsgi(app)
-# ALWAYS CHANGE THIS BACK!!!!!
+# # ALWAYS CHANGE THIS BACK!!!!!
