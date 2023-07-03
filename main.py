@@ -15,8 +15,8 @@ app = Flask(__name__)
 version = "1.05"
 
 # Standard Colors
-bg_color = "#F5B227"
-name_color = "white"
+bg_color = "F4B228"
+name_color = "FFFFFF"
 
 @app.route("/")
 def index():
@@ -28,14 +28,12 @@ def overlay(language,type,animated,gamertag):
     path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
     if exists("./templates/"+path_file):
         if animated == "acustom" or "scustom":
-            try: bg_color = request.args.get('bg_color', default="#F5B227")
+            try: bg_color = request.args.get('bg_color', default="F4B228")
             except: pass
-            if bg_color.startswith('#'):
-                pass
-            else:
-                bg_color="#"+bg_color
-            try: name_color = request.args.get('name_color',default="white")
+            bg_color="#"+bg_color
+            try: name_color = request.args.get('name_color',default="FFFFFF")
             except: pass
+            name_color="#"+name_color
             return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'],bg_color = bg_color, name_color = name_color)
         else:
             return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
