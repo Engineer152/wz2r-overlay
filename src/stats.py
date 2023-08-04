@@ -17,7 +17,7 @@ def live_data(gamertag=""):
 
 def get_ranked_stats(gamertag=""):
     data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
-    coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-4'})
+    coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
     if coll != None:
         data['sr'] = coll['skillRating']
         data['dailysr'] = coll['deltaSkillRating']
