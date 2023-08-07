@@ -12,7 +12,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.10"
+version = "1.11"
 
 # Standard Colors
 bg_color = "F4B228"
@@ -49,4 +49,4 @@ def data(gamertag):
     return data
 
 app = WsgiToAsgi(app)
-# # ALWAYS CHANGE THIS BACK!!!!!
+# # ALWAYS CHANGE THIS BACK!!!!!=

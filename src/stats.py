@@ -17,8 +17,13 @@ def live_data(gamertag=""):
 
 def get_ranked_stats(gamertag=""):
     data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
-    coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
-    if coll != None:
+    coll = db.find({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
+    coll = list(coll)
+    for x in coll:
+        if x['gamertag'].lower() == gamertag.lower():
+            coll = x
+    # coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
+    if type(coll) == dict:
         data['sr'] = coll['skillRating']
         data['dailysr'] = coll['deltaSkillRating']
         data['rank'] = coll['rank'] + 1
