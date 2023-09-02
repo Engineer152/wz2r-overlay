@@ -1,6 +1,7 @@
 import pymongo
 import requests
 import re
+import urllib.parse
 
 client=pymongo.MongoClient("mongodb://userranked:UserRanked@15.235.43.233/test?authMechanism=DEFAULT",27017)
 db = client.test.rankedplayers
@@ -16,6 +17,7 @@ def live_data(gamertag=""):
     return None
 
 def get_ranked_stats(gamertag=""):
+    gamertag=urllib.parse.unquote(gamertag)
     data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
     coll = db.find({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
     coll = list(coll)

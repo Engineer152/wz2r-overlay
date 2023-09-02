@@ -17,6 +17,7 @@ version = "1.11"
 # Standard Colors
 bg_color = "F4B228"
 name_color = "FFFFFF"
+rank_color = "F4B228"
 
 @app.route("/")
 def index():
@@ -31,10 +32,14 @@ def overlay(language,type,animated,gamertag):
             try: bg_color = request.args.get('bg_color', default="F4B228")
             except: pass
             bg_color="#"+bg_color
-            try: name_color = request.args.get('name_color',default="FFFFFF")
+            try: name_color = request.args.get('name_color', default="FFFFFF")
             except: pass
             name_color="#"+name_color
-            return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'],bg_color = bg_color, name_color = name_color)
+            try: rank_color = request.args.get('rank_color', default=bg_color)
+            except: pass
+            if rank_color.startswith('#')!=True:
+                rank_color="#"+rank_color
+            return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'],bg_color = bg_color, name_color = name_color, rank_color = rank_color)
         else:
             return render_template(path_file, version = version, gamertag = gamertag.capitalize(), sr = data['sr'], dailysr = data['dailysr'], rank = data['rank'], dailyrank = data['dailyrank'])
     else:
@@ -49,4 +54,4 @@ def data(gamertag):
     return data
 
 app = WsgiToAsgi(app)
-# # ALWAYS CHANGE THIS BACK!!!!!=
+# ALWAYS CHANGE THIS BACK!!!!!
