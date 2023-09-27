@@ -251,15 +251,15 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var jsonResponse = JSON.parse(this.responseText);
+                    if (jsonResponse['version'] != "{{version}}") {
+                        window.location.reload(true)
+                    };
                     if (jsonResponse['sr'] != -1) {
                         document.getElementById("symrank").innerHTML = jsonResponse['rank'];
                         document.getElementById("sr").innerHTML = jsonResponse['sr'];
                         document.getElementById("dailysr").innerHTML = "&nbsp;" + jsonResponse['dailysr'];
                         document.getElementById("rank").innerHTML = jsonResponse['rank'];
                         document.getElementById("dailyrank").innerHTML = "&nbsp;" + jsonResponse['dailyrank'];
-                        if (jsonResponse['version'] != "{{version}}") {
-                            window.location.reload(true)
-                        };
                     return loadArrows(jsonResponse['dailysr'], jsonResponse['dailyrank']);
                     };
                 };
