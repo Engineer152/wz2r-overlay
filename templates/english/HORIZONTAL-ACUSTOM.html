@@ -224,7 +224,7 @@
                         document.getElementById("rank").innerHTML = jsonResponse['rank'];
                         document.getElementById("dailyrank").innerHTML = "&nbsp;" + jsonResponse['dailyrank'];
                         if (jsonResponse['version'] != "{{version}}") {
-                            location.reload()
+                            location.reload(true)
                         };
                     return loadArrows(jsonResponse['dailysr'], jsonResponse['dailyrank']);
                     };
