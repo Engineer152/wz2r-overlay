@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from src.stats import get_ranked_stats
+from src.camo import get_camo_stats
 from src.database import add_user
 from turbo_flask import Turbo
 import threading
@@ -23,6 +24,7 @@ rank_color = "F4B228"
 def index():
     return render_template("index.html")
 
+#WZ2 Ranked
 @app.route("/wz2r/top-250/<language>/<type>/<animated>/<gamertag>", methods=['GET'])
 def overlay(language,type,animated,gamertag):
     data = get_ranked_stats(gamertag)
@@ -45,11 +47,27 @@ def overlay(language,type,animated,gamertag):
     else:
         return render_template("error.html")
 
+# WZ3 Camos camo/{typeofcamo}/{username}
+@app.route("/camo/<typeofcamo>/<username>", methods=['GET'])
+def camo(typeofcamo,username):
+    data = get_camo_stats(typeofcamo,username)
+    path_file = f"english/CAMO-STATIC.html"
+    if exists("./templates/"+path_file):
+        return render_template(path_file, version = version, data = data, bg_color = bg_color, name_color = name_color, rank_color = rank_color)
+    else:
+        return render_template("error.html")
+
 @app.route("/backend-data/<gamertag>", methods=['GET'])
 def data(gamertag):
     try: add_user(gamertag)
     except: pass
     data = get_ranked_stats(gamertag.lower())
+    data['version'] = version
+    return data
+
+@app.route("/update-camo/<typeofcamo>/<username>", methods=['GET'])
+def camo_data(typeofcamo,username):
+    data = get_camo_stats(typeofcamo,username)
     data['version'] = version
     return data
 
