@@ -14,7 +14,6 @@ def get_camo_stats(typeofcamo="none",username="none"):
         return default  
     # Camo Titles
     camos = data['camos']
-    print(camos)
     camnew = []
     for c in camos:
         c['title'] = c['title'].upper()

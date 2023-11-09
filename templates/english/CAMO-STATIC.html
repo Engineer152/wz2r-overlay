@@ -215,11 +215,11 @@
         .username {
             position: absolute;
             z-index: 999;
-            top: 33px;
+            top: 32px;
             left: 555px;
             font-family: 'Poppins1';
             color: white;
-            font-size: 22px;
+            font-size: 25px;
             text-align: right;
             width: 350px;
             letter-spacing: 1.5px;
@@ -261,7 +261,7 @@
                 <p style='display:inline;' id='camoID'>{{ data["title"] }}</p>
             </div>
             <div class='username'>
-                <p style='display:inline;' id='username'>{{ data["displayName"] }}</p>
+                <p style='display:inline;' id='username'>@{{ data["username"] }}</p>
             </div>
             <img id='avatar' src='{{ data["imageUrlUser"] }}' alt="Avatar" class="avatar" style='display:inline;'>
             <div class='camo1'>
