@@ -6,7 +6,7 @@ default = {'camoId': 'none', 'title': 'N/A', 'imageUrlUser': 'https://static-cdn
 
 def get_camo_stats(typeofcamo="none",username="none"):
     url = f"https://api.codmunity.gg/users/camo/{typeofcamo}/{username}"
-    try: r = requests.get(url)
+    try: r = requests.get(url,timeout=10)
     except: return default
     try: data = r.json()
     except: return default
