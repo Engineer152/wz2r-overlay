@@ -18,21 +18,21 @@ def live_data(gamertag=""):
     return None
 
 def get_ranked_stats(gamertag=""):
-    season = curr_season()
-    gamertag=urllib.parse.unquote(gamertag)
+    # season = curr_season()
+    # gamertag=urllib.parse.unquote(gamertag)
     data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
-    coll = db.find({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': season})
-    coll = list(coll)
-    for x in coll:
-        if x['gamertag'].lower() == gamertag.lower():
-            coll = x
-    # coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
-    if type(coll) == dict:
-        data['sr'] = coll['skillRating']
-        data['dailysr'] = coll['deltaSkillRating']
-        data['rank'] = coll['rank'] + 1
-        data['dailyrank'] = coll['deltaRank']
-    else:
-        try: data['sr'], data['rank'] = live_data(gamertag)
-        except: pass
+    # coll = db.find({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': season})
+    # coll = list(coll)
+    # for x in coll:
+    #     if x['gamertag'].lower() == gamertag.lower():
+    #         coll = x
+    # # coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
+    # if type(coll) == dict:
+    #     data['sr'] = coll['skillRating']
+    #     data['dailysr'] = coll['deltaSkillRating']
+    #     data['rank'] = coll['rank'] + 1
+    #     data['dailyrank'] = coll['deltaRank']
+    # else:
+    #     try: data['sr'], data['rank'] = live_data(gamertag)
+    #     except: pass
     return data
