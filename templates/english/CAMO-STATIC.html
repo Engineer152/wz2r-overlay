@@ -315,10 +315,12 @@
                     if (jsonResponse['version'] != "{{version}}") {
                         window.location.reload(true)
                     };
-                    document.getElementById("camo1prog").innerHTML = jsonResponse['camos'][0]['progress'];
-                    document.getElementById("camo2prog").innerHTML = jsonResponse['camos'][1]['progress'];
-                    document.getElementById("camo3prog").innerHTML = jsonResponse['camos'][2]['progress'];
-                    document.getElementById("camo4prog").innerHTML = jsonResponse['camos'][3]['progress'];
+                    if (jsonResponse['displayName'] != "N/A") {
+                        document.getElementById("camo1prog").innerHTML = jsonResponse['camos'][0]['progress'];
+                        document.getElementById("camo2prog").innerHTML = jsonResponse['camos'][1]['progress'];
+                        document.getElementById("camo3prog").innerHTML = jsonResponse['camos'][2]['progress'];
+                        document.getElementById("camo4prog").innerHTML = jsonResponse['camos'][3]['progress'];
+                    };
                     return
                 };
             };
