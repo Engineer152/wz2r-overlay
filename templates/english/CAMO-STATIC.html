@@ -320,6 +320,10 @@
                         document.getElementById("camo2prog").innerHTML = jsonResponse['camos'][1]['progress'];
                         document.getElementById("camo3prog").innerHTML = jsonResponse['camos'][2]['progress'];
                         document.getElementById("camo4prog").innerHTML = jsonResponse['camos'][3]['progress'];
+                        document.getElementById("camo1tot").innerHTML = "/&nbsp;"+jsonResponse['camos'][0]['total'];
+                        document.getElementById("camo2tot").innerHTML = "/&nbsp;"+jsonResponse['camos'][1]['total'];
+                        document.getElementById("camo3tot").innerHTML = "/&nbsp;"+jsonResponse['camos'][2]['total'];
+                        document.getElementById("camo4tot").innerHTML = "/&nbsp;"+jsonResponse['camos'][3]['total'];
                     };
                     return
                 };
