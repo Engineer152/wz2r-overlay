@@ -26,6 +26,7 @@ def get_ranked_stats(gamertag=""):
     for x in coll:
         if x['gamertag'].lower() == gamertag.lower():
             coll = x
+            break
     # coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
     if type(coll) == dict:
         data['sr'] = coll['skillRating']
