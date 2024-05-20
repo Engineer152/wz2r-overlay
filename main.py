@@ -13,7 +13,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.30"
+version = "1.31"
 
 # Standard Colors
 bg_color = "F4B228"
@@ -29,7 +29,7 @@ def index():
 def overlay(language,type,animated,gamertag):
     data = get_ranked_stats(gamertag)
     path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
-    if exists("./templates/"+path_file):
+    if exists("./templates/ranked/"+path_file):
         if animated == "acustom" or "scustom":
             try: bg_color = request.args.get('bg_color', default="F4B228")
             except: pass
@@ -51,7 +51,7 @@ def overlay(language,type,animated,gamertag):
 @app.route("/camo/<typeofcamo>/<username>", methods=['GET'])
 def camo(typeofcamo,username):
     data = get_camo_stats(typeofcamo,username)
-    path_file = f"english/CAMO-STATIC.html"
+    path_file = f"camo/english/CAMO-STATIC.html"
     if exists("./templates/"+path_file):
         return render_template(path_file, version = version, data = data, bg_color = bg_color, name_color = name_color, rank_color = rank_color)
     else:
@@ -70,6 +70,12 @@ def camo_data(typeofcamo,username):
     data = get_camo_stats(typeofcamo,username)
     data['version'] = version
     return data
+
+# @app.route("/update-team/<team>", methods=['GET'])
+# def camo_data(typeofcamo,username):
+#     data = get_camo_stats(typeofcamo,username)
+#     data['version'] = version
+#     return data
 
 app = WsgiToAsgi(app)
 # ALWAYS CHANGE THIS BACK!!!!!
