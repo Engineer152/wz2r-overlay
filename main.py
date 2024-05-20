@@ -28,8 +28,8 @@ def index():
 @app.route("/wz2r/top-250/<language>/<type>/<animated>/<gamertag>", methods=['GET'])
 def overlay(language,type,animated,gamertag):
     data = get_ranked_stats(gamertag)
-    path_file = f"{language}/{type.upper()}-{animated.upper()}.html"
-    if exists("./templates/ranked/"+path_file):
+    path_file = f"ranked/{language}/{type.upper()}-{animated.upper()}.html"
+    if exists("./templates/"+path_file):
         if animated == "acustom" or "scustom":
             try: bg_color = request.args.get('bg_color', default="F4B228")
             except: pass
