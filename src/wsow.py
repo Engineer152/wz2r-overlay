@@ -1,5 +1,6 @@
 import os
 import requests
+from src.database import wsow_current
 
 base_url = "https://api.codmunity.gg/wsow/overlay/"
 headers = {
@@ -13,11 +14,10 @@ def default_data(teamname):
     default['teamName']=teamname
     return default
 
-def get_wsow_stats(teamname,year,phase,region):
+def get_wsow_stats(region,teamname):
+    com = wsow_current()
     dataout={}
-    if phase == "ingameopen" and region == "na":
-        phase = "na-in-game-open"
-    url = f"{base_url}{phase}/{teamname}"
+    url = base_url + f"{com['year']}/{com['phase']}/{region}/{teamname}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(teamname)
     try: data = r.json()

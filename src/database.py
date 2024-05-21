@@ -10,6 +10,12 @@ def curr_season():
     s = doc['current']
     return s
 
+def wsow_current():
+    collection=qsbpartner.WSOW.General
+    doc = collection.find_one({})
+    s = doc['current']
+    return s
+
 def add_user(user):
     collection=qsbpartner.WZRanked.Users
     season = curr_season()

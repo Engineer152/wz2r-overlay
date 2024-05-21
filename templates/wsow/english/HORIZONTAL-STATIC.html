@@ -234,7 +234,7 @@
                 };
             };
             xhttp.overrideMimeType("application/json");
-            xhttp.open("GET", "/update-wsow-team/{{year}}/{{phase}}/{{region}}/{{teamname}}", true);
+            xhttp.open("GET", "/update-wsow-team/{{region}}/{{teamname}}", true);
             xhttp.send();
         } setInterval(loadData, 30000);
     </script>
