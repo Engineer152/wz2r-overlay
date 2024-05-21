@@ -15,9 +15,8 @@ def default_data(teamname):
     return default
 
 def get_wsow_stats(region,teamname):
-    com = wsow_current()
     dataout={}
-    url = base_url + f"{com['year']}/{com['phase']}/{region}/{teamname}"
+    url = base_url + f"{region}/{teamname}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(teamname)
     try: data = r.json()
