@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from src.stats import get_ranked_stats
 from src.camo import get_camo_stats
 from src.wsow import get_wsow_stats
@@ -23,7 +23,8 @@ rank_color = "F4B228"
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return redirect('https://codmunity.gg/overlay')
+    # return render_template("index.html")
 
 #WZ2 Ranked
 @app.route("/wz2r/top-250/<language>/<type>/<animated>/<gamertag>", methods=['GET'])
