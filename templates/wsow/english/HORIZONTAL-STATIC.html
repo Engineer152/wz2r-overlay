@@ -63,7 +63,7 @@
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 82px;
+            top: 83px;
             left: 220px;
             margin-left: auto; 
             margin-right: auto;
@@ -72,16 +72,16 @@
             width: 74px;
             height: 21px;
             font-family: 'Montserrat_Medium';
-            color: white;
-            font-size: 14px;
+            color: black;
+            font-size: 12px;
         }
 
         .player2 {
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 82px;
-            left: 295px;
+            top: 83px;
+            left: 296px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
@@ -89,25 +89,25 @@
             width: 74px;
             height: 21px;
             font-family: 'Montserrat_Medium';
-            color: white;
-            font-size: 14px;
+            color: black;
+            font-size: 12px;
         }
 
         .player3 {
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 82px;
+            top: 83px;
             left: 373px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            width: 74px;
+            width: 75px;
             height: 21px;
             font-family: 'Montserrat_Medium';
-            color: white;
-            font-size: 14px;
+            color: black;
+            font-size: 12px;
         }
 
         .rank {
@@ -186,13 +186,13 @@
                 <p style='display:inline'>{{ teamname }}</p> 
             </div>
             <div class='player1' id="players">
-                <p style='display:inline' id="player1">{{ players[0] }}</p> 
+                <p style='display:inline' id="player1">{{ players[0] | upper }}</p> 
             </div>
             <div class='player2' id="players">
-                <p style='display:inline' id="player2">{{ players[1] }}</p> 
+                <p style='display:inline' id="player2">{{ players[1] | upper }}</p> 
             </div>
             <div class='player3' id="players">
-                <p style='display:inline' id="player3">{{ players[2] }}</p> 
+                <p style='display:inline' id="player3">{{ players[2] | upper }}</p> 
             </div>
             <div class='rank' id="rank">
                 <p style='display:inline'>{{ rank }}</p> 
@@ -259,7 +259,7 @@
         })
         const boxes2 = document.querySelectorAll('.players p')
         boxes2.forEach(box => {
-            var newSize = getSize(box.textContent.length, 14, 6)
+            var newSize = getSize(box.textContent.length, 12, 6)
             document.getElementById("players").style.fontSize = newSize[0]
         })
     </script>
