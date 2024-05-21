@@ -63,6 +63,7 @@
             position: absolute;
             z-index: 999;
             text-align: center;
+            align-content: center;
             top: 83px;
             left: 220px;
             margin-left: auto; 
@@ -73,13 +74,14 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: black;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .player2 {
             position: absolute;
             z-index: 999;
             text-align: center;
+            align-content: center;
             top: 83px;
             left: 296px;
             margin-left: auto; 
@@ -90,13 +92,14 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: black;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .player3 {
             position: absolute;
             z-index: 999;
             text-align: center;
+            align-content: center;
             top: 83px;
             left: 373px;
             margin-left: auto; 
@@ -107,7 +110,7 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: black;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .rank {
@@ -259,7 +262,7 @@
         })
         const boxes2 = document.querySelectorAll('.players p')
         boxes2.forEach(box => {
-            var newSize = getSize(box.textContent.length, 12, 5)
+            var newSize = getSize(box.textContent.length, 10, 4)
             document.getElementById("players").style.fontSize = newSize[0]
         })
     </script>
