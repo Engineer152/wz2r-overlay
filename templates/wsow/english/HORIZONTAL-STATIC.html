@@ -63,7 +63,7 @@
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 84px;
+            top: 82px;
             left: 220px;
             margin-left: auto; 
             margin-right: auto;
@@ -73,14 +73,14 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: white;
-            font-size: 10px;
+            font-size: 14px;
         }
 
         .player2 {
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 84px;
+            top: 82px;
             left: 295px;
             margin-left: auto; 
             margin-right: auto;
@@ -90,14 +90,14 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: white;
-            font-size: 10px;
+            font-size: 14px;
         }
 
         .player3 {
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 84px;
+            top: 82px;
             left: 373px;
             margin-left: auto; 
             margin-right: auto;
@@ -107,7 +107,7 @@
             height: 21px;
             font-family: 'Montserrat_Medium';
             color: white;
-            font-size: 10px;
+            font-size: 14px;
         }
 
         .rank {
@@ -220,8 +220,8 @@
                     if (jsonResponse['version'] != "{{version}}") {
                         window.location.reload(true)
                     };
-                    if (jsonResponse['sr'] != -1) {
-                        document.getElementById("teamname").innerHTML = jsonResponse['teamName'];
+                    if (jsonResponse['rank'] != -1) {
+                        // document.getElementById("teamname").innerHTML = jsonResponse['teamName'];
                         document.getElementById("player1").innerHTML = jsonResponse['players'][0];
                         document.getElementById("player2").innerHTML = jsonResponse['players'][1];
                         document.getElementById("player3").innerHTML = jsonResponse['players'][2];
@@ -259,7 +259,7 @@
         })
         const boxes2 = document.querySelectorAll('.players p')
         boxes2.forEach(box => {
-            var newSize = getSize(box.textContent.length, 10, 6)
+            var newSize = getSize(box.textContent.length, 14, 6)
             document.getElementById("players").style.fontSize = newSize[0]
         })
     </script>
