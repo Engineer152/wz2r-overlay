@@ -84,8 +84,8 @@ def camo_data(typeofcamo,username):
     return data
 
 @app.route("/update-wsow-team/<region>/<teamname>", methods=['GET'])
-def wsow_data(teamname,year,phase,region):
-    data = get_wsow_stats(teamname,year,phase,region)
+def wsow_data(region,teamname):
+    data = get_wsow_stats(region,teamname)
     data['version'] = version
     return data
 
