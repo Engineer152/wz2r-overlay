@@ -188,13 +188,13 @@
             <div class='teamname' id="teamname">
                 <p style='display:inline'>{{ teamname }}</p> 
             </div>
-            <div class='player1' id="players">
+            <div class='player1' id="player1">
                 <p style='display:inline' id="player1">{{ players[0] | upper }}</p> 
             </div>
-            <div class='player2' id="players">
+            <div class='player2' id="player2">
                 <p style='display:inline' id="player2">{{ players[1] | upper }}</p> 
             </div>
-            <div class='player3' id="players">
+            <div class='player3' id="player3">
                 <p style='display:inline' id="player3">{{ players[2] | upper }}</p> 
             </div>
             <div class='rank' id="rank">
@@ -260,10 +260,20 @@
             var newSize = getSize(box.textContent.length, 24, 14)
             document.getElementById("teamname").style.fontSize = newSize[0]
         })
-        const boxes2 = document.querySelectorAll('.players p')
+        const boxes1 = document.querySelectorAll('.player1 p')
+        boxes1.forEach(box => {
+            var newSize = getSize(box.textContent.length, 12, 4)
+            document.getElementById("player1").style.fontSize = newSize[0]
+        })
+        const boxes2 = document.querySelectorAll('.player2 p')
         boxes2.forEach(box => {
             var newSize = getSize(box.textContent.length, 12, 4)
-            document.getElementById("players").style.fontSize = newSize[0]
+            document.getElementById("player2").style.fontSize = newSize[0]
+        })
+        const boxes3 = document.querySelectorAll('.player3 p')
+        boxes3.forEach(box => {
+            var newSize = getSize(box.textContent.length, 12, 4)
+            document.getElementById("player3").style.fontSize = newSize[0]
         })
     </script>
 </body>
