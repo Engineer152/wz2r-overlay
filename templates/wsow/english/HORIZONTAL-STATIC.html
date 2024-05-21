@@ -211,7 +211,7 @@
             </div>
         </div>
         <div class="bg_image" style="z-index:1;">
-            <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC.png')}}" alt='horizontal-overlay'>
+            <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC.png')}}" width="1032" alt='horizontal-overlay'>
         </div>
     </div>
     <script>
@@ -224,10 +224,6 @@
                         window.location.reload(true)
                     };
                     if (jsonResponse['rank'] != -1) {
-                        // document.getElementById("teamname").innerHTML = jsonResponse['teamName'];
-                        document.getElementById("player1").innerHTML = jsonResponse['players'][0];
-                        document.getElementById("player2").innerHTML = jsonResponse['players'][1];
-                        document.getElementById("player3").innerHTML = jsonResponse['players'][2];
                         document.getElementById("rank").innerHTML = jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
                         document.getElementById("topPlace").innerHTML = "TOP"+jsonResponse['topPlace'];
