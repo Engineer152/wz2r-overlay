@@ -27,7 +27,7 @@ def get_wsow_stats(region,teamname):
     dataout['players']=[data['players'][0]['name'], data['players'][1]['name'], data['players'][2]['name']]
     dataout['rank']=data['rank']
     dataout['points']=data['points']
-    if data['qualifyingThreshold']:
+    if 'qualifyingThreshold' in data:
         dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
     return dataout
