@@ -203,16 +203,24 @@
             <div class='points' id="points">
                 <p style='display:inline'>{{ points }}</p> 
             </div>
-            <div class='topPlace' id="topPlace">
-                <p style='display:inline'>{{ topPlace }}</p> 
-            </div>
-            <div class='topPoints' id="topPoints">
-                <p style='display:inline'>{{ topPoints }}</p> 
-            </div>
+            {% if topPlace != "-" %}
+                <div class='topPlace' id="topPlace">
+                    <p style='display:inline'>{{ topPlace }}</p> 
+                </div>
+                <div class='topPoints' id="topPoints">
+                    <p style='display:inline'>{{ topPoints }}</p> 
+                </div>
+            {% endif %}
         </div>
-        <div class="bg_image" style="z-index:1;">
-            <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC.png')}}" width="1032" alt='horizontal-overlay'>
-        </div>
+        {% if topPlace != "-" %}
+            <div class="bg_image" style="z-index:1;">
+                <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC.png')}}" width="1032" alt='horizontal-overlay'>
+            </div>
+        {% else %}
+            <div class="bg_image" style="z-index:1;">
+                <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC_GLOBAL.png')}}" width="1032" alt='horizontal-overlay'>
+            </div>
+        {% endif %}
     </div>
     <script>
         function loadData() {
