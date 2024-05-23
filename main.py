@@ -61,7 +61,7 @@ def camo(typeofcamo,username):
 
 # WSOW Teams wsow/<year>/<type>/<reigon>/<teamname>
 @app.route("/wsow/<region>/<teamname>", methods=['GET'])
-def wsow(teamname,region):
+def wsow(region: str,teamname: str):
     path_file = f"wsow/english/HORIZONTAL-STATIC.html"
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):

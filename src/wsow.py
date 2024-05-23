@@ -15,7 +15,7 @@ def default_data(teamname):
     return default
 
 def get_wsow_stats(region,teamname):
-    dataout={}
+    dataout={'topPlace':0,'topPoints':0}
     url = base_url + f"{region}/{teamname}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(teamname)
@@ -27,6 +27,7 @@ def get_wsow_stats(region,teamname):
     dataout['players']=[data['players'][0]['name'], data['players'][1]['name'], data['players'][2]['name']]
     dataout['rank']=data['rank']
     dataout['points']=data['points']
-    dataout['topPlace'] = data['qualifyingThreshold']
-    dataout['topPoints'] = data['lastQualifyingTeamPoints']
+    if data['qualifyingThreshold']:
+        dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
+        dataout['topPoints'] = data['lastQualifyingTeamPoints']
     return dataout
