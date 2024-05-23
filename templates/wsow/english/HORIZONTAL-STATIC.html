@@ -226,14 +226,8 @@
                     if (jsonResponse['rank'] != -1) {
                         document.getElementById("rank").innerHTML = jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
-                        if (jsonResponse['topPlace']!=0){
-                            document.getElementById("topPlace").innerHTML = jsonResponse['topPlace'];
-                            document.getElementById("topPoints").innerHTML = jsonResponse['topPoints'];
-                        }
-                        else {
-                            document.getElementById("topPlace").innerHTML = "-";
-                            document.getElementById("topPoints").innerHTML = "-";
-                        }
+                        document.getElementById("topPlace").innerHTML = jsonResponse['topPlace'];
+                        document.getElementById("topPoints").innerHTML = jsonResponse['topPoints'];
                         return;
                     };
                 };

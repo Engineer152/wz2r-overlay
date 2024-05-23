@@ -7,15 +7,15 @@ headers = {
     "x-api-key": os.environ['x-api-key']
 }
 
-default = {"teamName":"none","players":[{"name":"Player 1"},{"name":"Player 2"},{"name":"Player 3"}],"rank":0,"points":0,"qualifyingThreshold":0,"lastQualifyingTeamPoints":0}
-# default = {"teamName":"none","players":["Player 1","Player 2","Player 3"],"rank":0,"points":0,"topPoints":0,"lastQualifyingTeamPoints":0}
+default = {"teamName":"none","players":[{"name":"Player 1"},{"name":"Player 2"},{"name":"Player 3"}],"rank":0,"points":0,"topPlace":'-',"topPoints":'-'}
+# default = {"teamName":"none","players":["Player 1","Player 2","Player 3"],"rank":0,"points":0,"qualifyingThreshold":'-',"lastQualifyingTeamPoints":'-'}
 
 def default_data(teamname):
     default['teamName']=teamname
     return default
 
 def get_wsow_stats(region,teamname):
-    dataout={'topPlace':0,'topPoints':0}
+    dataout={'topPlace':'-','topPoints':'-'}
     url = base_url + f"{region}/{teamname}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(teamname)
