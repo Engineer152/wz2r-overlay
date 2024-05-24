@@ -14,7 +14,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.35"
+version = "1.36"
 
 # Standard Colors
 bg_color = "F4B228"
@@ -62,7 +62,7 @@ def camo(typeofcamo,username):
 # WSOW Teams wsow/<year>/<type>/<reigon>/<teamname>
 @app.route("/wsow/<region>/<teamname>", methods=['GET'])
 def wsow(region: str,teamname: str):
-    path_file = f"wsow/english/HORIZONTAL-STATIC.html"
+    path_file = f"wsow/english/HORIZONTAL-STATIC-NO-TEAM.html"
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
         return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region)
@@ -71,7 +71,7 @@ def wsow(region: str,teamname: str):
     
 @app.route("/test/wsow/<region>/<teamname>", methods=['GET'])
 def wsow_test(region: str,teamname: str):
-    path_file = f"wsow/english/HORIZONTAL-STATIC-NO-TEAM.html"
+    path_file = f"wsow/english/HORIZONTAL-STATIC.html"
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
         return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region)
