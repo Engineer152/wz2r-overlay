@@ -70,7 +70,7 @@ def wsow(region: str,teamname: str):
         return render_template("error.html")
     
 @app.route("/test/wsow/<region>/<teamname>", methods=['GET'])
-def wsow(region: str,teamname: str):
+def wsow_test(region: str,teamname: str):
     path_file = f"wsow/english/HORIZONTAL-STATIC-NO-TEAM.html"
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
