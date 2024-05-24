@@ -16,6 +16,10 @@ def default_data(teamname):
 
 def get_wsow_stats(region,teamname):
     dataout={'topPlace':'-','topPoints':'-'}
+    if region.lower() == "eu":
+        region = "emea"
+    elif region.lower() == "global":
+        region = "all"
     url = base_url + f"{region}/{teamname}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(teamname)

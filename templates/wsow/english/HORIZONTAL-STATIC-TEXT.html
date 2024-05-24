@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet"
+        href="{{url_for('static',filename='fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css')}}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html{
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        .bg_image {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @font-face {
+            font-family: 'Montserrat_ExtraBold';
+            src: url("{{url_for('static',filename='fonts/Montserrat-ExtraBold.ttf')}}");
+        }
+
+        @font-face {
+            font-family: 'Montserrat_Medium';
+            src: url("{{url_for('static',filename='fonts/Montserrat-Medium.ttf')}}");
+        }
+
+        @font-face {
+            font-family: 'Montserrat_SemiBold';
+            src: url("{{url_for('static',filename='fonts/Montserrat-SemiBold.ttf')}}");
+        }
+
+        .textnote {
+            position: absolute;
+            z-index: 999;
+            text-align: -webkit-center;
+            align-content: center;
+            top: 28px;
+            left: 197px;
+            margin-left: auto; 
+            margin-right: auto;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 272px;
+            height: 40px;
+            font-family: 'Montserrat_ExtraBold';
+            color: white;
+            font-size: 24px;
+        }
+
+        .rank {
+            position: absolute;
+            z-index: 999;
+            top: 34px;
+            left: 597px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 75px;
+            height: 25px;
+            font-family: 'Montserrat_SemiBold';
+            color: white;
+            font-size: 22px;
+        }
+
+        .points {
+            position: absolute;
+            z-index: 999;
+            top: 34px;
+            left: 780px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 75px;
+            height: 25px;
+            font-family: 'Montserrat_SemiBold';
+            color: white;
+            font-size: 22px;
+        }
+
+        .topPlace {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 80px;
+            left: 689px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 84px;
+            height: 25px;
+            font-family: 'Montserrat_SemiBold';
+            color: white;
+            font-size: 17px;
+        }
+
+        .topPoints {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 80px;
+            left: 773px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 89px;
+            height: 25px;
+            font-family: 'Montserrat_SemiBold';
+            color: white;
+            font-size: 17px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="boxx" id="boxx">
+            <div class='textnote' id="textnote">
+                <p style='display:inline' id="textnote">{{ textnote }}</p> 
+            </div>
+            <div class='rank' id="rank">
+                <p style='display:inline'>{{ rank }}</p> 
+            </div>
+            <div class='points' id="points">
+                <p style='display:inline'>{{ points }}</p> 
+            </div>
+            {% if topPlace != "-" %}
+                <div class='topPlace' id="topPlace">
+                    <p style='display:inline'>{{ topPlace }}</p> 
+                </div>
+                <div class='topPoints' id="topPoints">
+                    <p style='display:inline'>{{ topPoints }}</p> 
+                </div>
+            {% endif %}
+        </div>
+        {% if topPlace != "-" %}
+            <div class="bg_image" style="z-index:1;">
+                <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC_TEXT.png')}}" width="1032" alt='horizontal-overlay'>
+            </div>
+        {% else %}
+            <div class="bg_image" style="z-index:1;">
+                <img src="{{url_for('static',filename='files/WSOW_HORIZONTAL_STATIC_TEXT_GLOBAL.png')}}" width="1032" alt='horizontal-overlay'>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonResponse = JSON.parse(this.responseText);
+                    if (jsonResponse['version'] != "{{version}}") {
+                        window.location.reload(true)
+                    };
+                    if (jsonResponse['rank'] != -1) {
+                        document.getElementById("rank").innerHTML = jsonResponse['rank'];
+                        document.getElementById("points").innerHTML = jsonResponse['points'];
+                        document.getElementById("topPlace").innerHTML = jsonResponse['topPlace'];
+                        document.getElementById("topPoints").innerHTML = jsonResponse['topPoints'];
+                        return;
+                    };
+                };
+            };
+            xhttp.overrideMimeType("application/json");
+            xhttp.open("GET", "/update-wsow-team/{{region}}/{{teamname}}", true);
+            xhttp.send();
+        } setInterval(loadData, 30000);
+    </script>
+    <script>
+        const getSize = (textLength, size, length) => {
+            const baseSize = size
+            const baseLength = length
+            if (baseLength < textLength) {
+                fontSize = baseSize - (textLength - baseLength)
+                topDist = 10 + 2*(textLength - baseLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            } else if (baseLength > textLength) {
+                fontSize = baseSize + (baseLength - textLength)
+                topDist = 10 - 2*(baseLength - textLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            }
+        };
+        const boxest = document.querySelectorAll('.textnote p')
+        boxest.forEach(boxt => {
+            var newSize = getSize(boxt.textContent.length, 24, 14)
+            document.getElementById("textnote").style.fontSize = newSizet[0]
+        });
+    </script>
+</body>
+
+</html>
