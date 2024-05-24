@@ -52,14 +52,14 @@
             z-index: 999;
             text-align: center;
             align-content: center;
-            top: 40px;
-            left: 220px;
+            top: 31px;
+            left: 198px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            width: 74px;
-            height: 21px;
+            width: 88px;
+            height: 34px;
             font-family: 'Montserrat_Medium';
             color: black;
             font-size: 14px;
@@ -70,14 +70,14 @@
             z-index: 999;
             text-align: center;
             align-content: center;
-            top: 40px;
-            left: 296px;
+            top: 31px;
+            left: 289px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            width: 74px;
-            height: 21px;
+            width: 88px;
+            height: 34px;
             font-family: 'Montserrat_Medium';
             color: black;
             font-size: 14px;
@@ -88,14 +88,14 @@
             z-index: 999;
             text-align: center;
             align-content: center;
-            top: 40px;
-            left: 373px;
+            top: 31px;
+            left: 380px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            width: 74px;
-            height: 21px;
+            width: 88px;
+            height: 34px;
             font-family: 'Montserrat_Medium';
             color: black;
             font-size: 14px;
@@ -246,17 +246,29 @@
         };
         const boxes1 = document.querySelectorAll('.player1 p')
         boxes1.forEach(box1 => {
-            var newSize1 = getSize(box1.textContent.length, 14, 5)
+            var tout = box1.textContent;
+            if (tout.split(/\W+/).length === 2) {
+                tout = tout.split(/\W+/)[1];
+            };
+            var newSize1 = getSize(tout.length, 14, 5)
             document.getElementById("player1").style.fontSize = newSize1[0]
         });
         const boxes2 = document.querySelectorAll('.player2 p')
         boxes2.forEach(box2 => {
-            var newSize2 = getSize(box2.textContent.length, 14, 5)
+            var tout = box2.textContent;
+            if (tout.split(/\W+/).length === 2) {
+                tout = tout.split(/\W+/)[1];
+            };
+            var newSize2 = getSize(tout.length, 14, 5)
             document.getElementById("player2").style.fontSize = newSize2[0]
         });
         const boxes3 = document.querySelectorAll('.player3 p')
         boxes3.forEach(box3 => {
-            var newSize3 = getSize(box3.textContent.length, 14, 5)
+            var tout = box3.textContent;
+            if (tout.split(/\W+/).length === 2) {
+                tout = tout.split(/\W+/)[1];
+            };
+            var newSize3 = getSize(tout.length, 14, 5)
             document.getElementById("player3").style.fontSize = newSize3[0]
         });
     </script>
