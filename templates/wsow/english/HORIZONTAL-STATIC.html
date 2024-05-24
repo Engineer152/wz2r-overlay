@@ -57,8 +57,9 @@
             left: 197px;
             margin-left: auto; 
             margin-right: auto;
-            margin-top: 0 auto;
-            margin-bottom: 0 auto;
+            vertical-align: auto;
+            /* margin-top: auto;
+            margin-bottom: auto; */
             width: 272px;
             height: 25px;
             font-family: 'Montserrat_ExtraBold';
@@ -193,8 +194,7 @@
     <div class="box" id="box">
         <div class="boxx" id="boxx">
             <div class='teamname' id="teamname">
-                <!-- <p style='display:inline' id="teamname">{{ teamname }}</p>  -->
-                {{ teamname }}
+                <p style='display:inline' id="teamname">{{ teamname }}</p> 
             </div>
             <div class='player1' id="player1">
                 <p style='display:inline' id="player1">{{ players[0] | upper }}</p> 

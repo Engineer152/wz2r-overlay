@@ -65,7 +65,7 @@ def wsow(region: str,teamname: str):
     path_file = f"wsow/english/HORIZONTAL-STATIC.html"
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
-        return render_template(path_file, version=version, teamname=data['teamName'], players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region)
+        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region)
     else:
         return render_template("error.html")
 
