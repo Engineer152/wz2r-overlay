@@ -274,20 +274,41 @@
             var newSize = getSize(boxt.textContent.length, 24, 14)
             document.getElementById("teamname").style.fontSize = newSizet[0]
         });
-        const boxesa = document.querySelectorAll('.player1 p')
-        boxesa.forEach(boxa => {
-            var newSize1 = getSize(boxa.textContent.length, 14, 5)
-            document.getElementById("player1").style.fontSize = newSizea[0]
+        const boxes1 = document.querySelectorAll('.player1 p')
+        boxes1.forEach(box1 => {
+            if (box1.textContent < 11) {
+                var newSize1 = getSize(box1.textContent.length, 14, 6)
+                document.getElementById("player1").style.fontSize = newSize1[0]
+            } else {
+                var newbox1 = box1.textContent.substring(0, 10)
+                var newSize1 = getSize(newbox1.length, 14, 6)
+                document.getElementById("player1").style.fontSize = newSize1[0]
+                document.getElementById("player1").innerHTML = newbox1
+            };
         });
-        const boxesb = document.querySelectorAll('.player2 p')
-        boxesb.forEach(boxb => {
-            var newSize2 = getSize(boxb.textContent.length, 14, 5)
-            document.getElementById("player2").style.fontSize = newSizeb[0]
+        const boxes2 = document.querySelectorAll('.player2 p')
+        boxes2.forEach(box2 => {
+            if (box2.textContent < 11) {
+                var newSize2 = getSize(box2.textContent.length, 14, 6)
+                document.getElementById("player2").style.fontSize = newSize2[0]
+            } else {
+                var newbox2 = box2.textContent.substring(0, 10)
+                var newSize2 = getSize(newbox2.length, 14, 6)
+                document.getElementById("player2").style.fontSize = newSize2[0]
+                document.getElementById("player2").innerHTML = newbox2
+            };
         });
-        const boxesc = document.querySelectorAll('.player3 p')
-        boxesc.forEach(boxc => {
-            var newSize3 = getSize(boxc.textContent.length, 14, 5)
-            document.getElementById("player3").style.fontSize = newSizec[0]
+        const boxes3 = document.querySelectorAll('.player3 p')
+        boxes3.forEach(box3 => {
+            if (box3.textContent < 11) {
+                var newSize3 = getSize(box3.textContent.length, 14, 6)
+                document.getElementById("player3").style.fontSize = newSize3[0]
+            } else {
+                var newbox3 = box3.textContent.substring(0, 10)
+                var newSize3 = getSize(newbox3.length, 14, 6)
+                document.getElementById("player3").style.fontSize = newSize3[0]
+                document.getElementById("player3").innerHTML = newbox3
+            };
         });
     </script>
 </body>

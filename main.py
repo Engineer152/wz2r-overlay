@@ -14,7 +14,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.37"
+version = "1.38"
 
 # Standard Colors
 bg_color = "F4B228"
@@ -77,7 +77,7 @@ def wsow(region: str,teamname: str):
     
 @app.route("/test/wsow/<region>/<teamname>", methods=['GET'])
 def wsow_test(region: str,teamname: str):
-    path_file = f"wsow/english/HORIZONTAL-STATIC-TEXT.html"
+    path_file = f"wsow/english/HORIZONTAL-STATIC.html"
     try: text = request.args.get('text', default="")
     except: pass
     data = get_wsow_stats(region,teamname)
