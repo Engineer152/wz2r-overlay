@@ -14,7 +14,7 @@ from asgiref.wsgi import WsgiToAsgi
 app = Flask(__name__)
 
 # Change Version to update All
-version = "1.34"
+version = "1.35"
 
 # Standard Colors
 bg_color = "F4B228"
