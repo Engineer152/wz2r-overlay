@@ -64,9 +64,14 @@ def camo(typeofcamo,username):
 @app.route("/wsow/<region>/<teamname>", methods=['GET'])
 def wsow(region: str,teamname: str):
     path_file = f"wsow/english/HORIZONTAL-STATIC-NO-TEAM.html"
+    try: text = request.args.get('text', default="")
+    except: text = ""
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
-        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region)
+        if text != "":
+            return render_template(f"wsow/english/HORIZONTAL-STATIC-TEXT.html", version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
+        else:
+            return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
     else:
         return render_template("error.html")
     
