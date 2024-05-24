@@ -246,29 +246,17 @@
         };
         const boxes1 = document.querySelectorAll('.player1 p')
         boxes1.forEach(box1 => {
-            var tout = box1.textContent;
-            if (tout.split(/\W+/).length === 2) {
-                tout = tout.split(/\W+/)[1];
-            };
-            var newSize1 = getSize(tout.length, 14, 5)
+            var newSize1 = getSize(box1.textContent.length, 14, 5)
             document.getElementById("player1").style.fontSize = newSize1[0]
         });
         const boxes2 = document.querySelectorAll('.player2 p')
         boxes2.forEach(box2 => {
-            var tout = box2.textContent;
-            if (tout.split(/\W+/).length === 2) {
-                tout = tout.split(/\W+/)[1];
-            };
-            var newSize2 = getSize(tout.length, 14, 5)
+            var newSize2 = getSize(box2.textContent.length, 14, 5)
             document.getElementById("player2").style.fontSize = newSize2[0]
         });
         const boxes3 = document.querySelectorAll('.player3 p')
         boxes3.forEach(box3 => {
-            var tout = box3.textContent;
-            if (tout.split(/\W+/).length === 2) {
-                tout = tout.split(/\W+/)[1];
-            };
-            var newSize3 = getSize(tout.length, 14, 5)
+            var newSize3 = getSize(box3.textContent.length, 14, 5)
             document.getElementById("player3").style.fontSize = newSize3[0]
         });
     </script>
