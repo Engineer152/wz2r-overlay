@@ -77,7 +77,7 @@ def wsow_test(region: str,teamname: str):
     except: pass
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
-        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, text=text)
+        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
     else:
         return render_template("error.html")
 
