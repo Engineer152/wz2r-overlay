@@ -2,6 +2,15 @@
 <html>
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4CDJCDKP7G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-4CDJCDKP7G');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet"
         href="{{url_for('static',filename='fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css')}}">
@@ -50,7 +59,7 @@
         .player1{
             position: absolute;
             z-index: 999;
-            text-align: -webkit-center !important;
+            text-align: center;
             align-content: center;
             top: 40px;
             left: 198px;
@@ -69,7 +78,7 @@
         .player2{
             position: absolute;
             z-index: 999;
-            text-align: -webkit-center !important;
+            text-align: center;
             align-content: center;
             top: 40px;
             left: 289px;
@@ -88,7 +97,7 @@
         .player3{
             position: absolute;
             z-index: 999;
-            text-align: -webkit-center !important;
+            text-align: center;
             align-content: center;
             top: 40px;
             left: 380px;
@@ -102,7 +111,6 @@
             color: black;
             font-size: 14px;
             vertical-align: middle;
-            -webkit-te
         }
 
         .rank {
