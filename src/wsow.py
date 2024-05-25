@@ -29,7 +29,7 @@ def get_wsow_stats(region,teamname):
     dataout['teamName']=data['teamName'].upper()
     players = []
     for p in data['players']:
-        try: players.append(p['name'][0:6])
+        try: players.append(p['name'][0:7])
         except: players.append("-")
     if len(players) < 3:
         players.extend(['-','-','-'])

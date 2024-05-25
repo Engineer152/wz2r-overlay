@@ -286,7 +286,7 @@
         const boxes1 = document.querySelectorAll('.player1 p')
         boxes1.forEach(box1 => {
             if (box1.textContent < 11) {
-                var newSize1 = getSize(box1.textContent.length, 14, 6)
+                var newSize1 = getSize(box1.textContent.length, 14, 7)
                 document.getElementById("player1").style.fontSize = newSize1[0]
             } else {
                 var newbox1 = box1.textContent.substring(0, 10)
@@ -298,7 +298,7 @@
         const boxes2 = document.querySelectorAll('.player2 p')
         boxes2.forEach(box2 => {
             if (box2.textContent < 11) {
-                var newSize2 = getSize(box2.textContent.length, 14, 6)
+                var newSize2 = getSize(box2.textContent.length, 14, 7)
                 document.getElementById("player2").style.fontSize = newSize2[0]
             } else {
                 var newbox2 = box2.textContent.substring(0, 10)
@@ -310,7 +310,7 @@
         const boxes3 = document.querySelectorAll('.player3 p')
         boxes3.forEach(box3 => {
             if (box3.textContent < 11) {
-                var newSize3 = getSize(box3.textContent.length, 14, 6)
+                var newSize3 = getSize(box3.textContent.length, 14, 7)
                 document.getElementById("player3").style.fontSize = newSize3[0]
             } else {
                 var newbox3 = box3.textContent.substring(0, 10)
