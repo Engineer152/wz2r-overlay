@@ -1,6 +1,5 @@
 import os
 import requests
-from src.database import wsow_current
 
 base_url = "https://api.codmunity.gg/wsow/overlay/"
 headers = {
@@ -28,7 +27,13 @@ def get_wsow_stats(region,teamname):
     if "teamName" not in data.keys():
         data = default_data(teamname)
     dataout['teamName']=data['teamName'].upper()
-    dataout['players']=[data['players'][0]['name'], data['players'][1]['name'], data['players'][2]['name']]
+    players = []
+    for p in data['players']:
+        try: players.append(p['name'])
+        except: players.append("-")
+    if len(players) < 3:
+        players.extend(['-','-','-'])
+    dataout['players']=players
     dataout['rank']=data['rank']
     dataout['points']=data['points']
     if 'qualifyingThreshold' in data:
