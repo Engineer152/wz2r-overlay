@@ -276,7 +276,7 @@
                 };
             };
             xhttp.overrideMimeType("application/json");
-            xhttp.open("GET", "/backend-data/{{gamertag}}", true);
+            xhttp.open("GET", "/backend-data/{{game}}/{{gamertag}}", true);
             xhttp.send();
         } setInterval(loadData, 30000);
     </script>

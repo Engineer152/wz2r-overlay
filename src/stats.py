@@ -1,39 +1,32 @@
-import pymongo
+import os
 import requests
 import re
 import urllib.parse
-from src.database import curr_season
 
-client=pymongo.MongoClient("mongodb://userranked:UserRanked@15.235.43.233/test?authMechanism=DEFAULT",27017)
-db = client.test.rankedplayers
+base_url = "https://api.codmunity.gg/ranked/overlay/"
+headers = {
+    "x-api-key": os.environ['x-api-key']
+}
 
-def live_data(gamertag=""):
-    url = "https://telescope.callofduty.com/api/ts-api/lb/v1/global/title/wz2/ranked/br"
-    r = requests.get(url)
-    resp = r.json()
-    players = resp['data']['data']['ranks']
-    for p in players:
-        if p['gamertag'].lower() == gamertag.lower():
-            return p['skillRating'], p['rank']+1
-    return None
+default = {'skillRating': 0, 'deltaSkillRating': 0, 'rank': 0, 'deltaRank': 0}
+# example_data = {"_id":"660ddc2ad88ff6316af162f6","created":1716985263048,"gamertag":"n4noFPS","rank":230,"maxRank":50,"hotstreak":3,"skillRating":14945,"isPro":false,"collec":"warzone-2","season":"year-2024-season-3","maxSkillRating":14945,"bestRank":0,"deltaRank":0,"deltaSkillRating":0,"__v":0,"previousRank":230,"previousSkillRating":14945,"gamertagLc":"n4nofps","id":"660ddc2ad88ff6316af162f6"}
 
-def get_ranked_stats(gamertag=""):
-    season = curr_season()
+def get_ranked_stats(game,gamertag=""):
+    dataout = {'gamertag': gamertag, 'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
     gamertag=urllib.parse.unquote(gamertag)
-    data = {'sr': 0, 'dailysr': 0, 'rank': 0, 'dailyrank': 0}
-    coll = db.find({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': season})
-    coll = list(coll)
-    for x in coll:
-        if x['gamertag'].lower() == gamertag.lower():
-            coll = x
-            break
-    # coll = db.find_one({'gamertag': re.compile(gamertag, re.IGNORECASE), 'season': 'season-5'})
-    if type(coll) == dict:
-        data['sr'] = coll['skillRating']
-        data['dailysr'] = coll['deltaSkillRating']
-        data['rank'] = coll['rank'] + 1
-        data['dailyrank'] = coll['deltaRank']
-    else:
-        try: data['sr'], data['rank'] = live_data(gamertag)
-        except: pass
-    return data
+    if game=="wz2r":
+        game = "warzone-2"
+    url = base_url + f"{game}/{gamertag}"
+    try: r = requests.get(url,headers=headers,timeout=10)
+    except: data = default
+    try: data = r.json()
+    except: data = default
+    if data == None:
+        data = default
+    if 'skillRating' in data:
+        dataout['sr'] = data['skillRating']
+        dataout['dailysr'] = data['deltaSkillRating']
+        if data['skillRating'] != 0:
+            dataout['rank'] = data['rank'] + 1
+        dataout['dailyrank'] = data['deltaRank']
+    return dataout
