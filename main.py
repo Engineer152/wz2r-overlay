@@ -87,7 +87,7 @@ def wsow_test(region: str,teamname: str):
         return render_template("error.html")
 
 @app.route("/backend-data/<game>/<gamertag>", methods=['GET'])
-def data(game,gamertag):
+def new_data(game,gamertag):
     data = get_ranked_stats(game,gamertag.lower())
     data['version'] = version
     return data
