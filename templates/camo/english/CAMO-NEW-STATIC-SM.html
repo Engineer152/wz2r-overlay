@@ -304,12 +304,12 @@
             </div>
             {% if  data["camos"][0]["progress"] != 0 %}
                 <div class="progress1"> 
-                    <div class="camo1bar" style='width:{{ ( data["camos"][0]["progress"] / data["camos"][0]["total"] ) * 100 }}%'></div> 
+                    <div class="camo1bar" style='width:{{ ( data["camos"][0]["progress"] / data["camos"][0]["max"] ) * 100 }}%'></div> 
                 </div> 
                 <div class='camo1prog'>
-                    <p style='display:inline;' id='camo1prog'>{{ data["camos"][0]["progress"] }}/{{ data["camos"][0]["total"] }}</p>
+                    <p style='display:inline;' id='camo1prog'>{{ data["camos"][0]["progress"] }}/{{ data["camos"][0]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][0]["progress"] == data["camos"][0]["total"] %}
+            {% elif  data["camos"][0]["progress"] == data["camos"][0]["max"] %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:135px;left:444px;'>   
             {% else %}
                 <div class='camo1prog'>
@@ -323,12 +323,12 @@
             </div>
             {% if  data["camos"][1]["progress"] != 0 %}
                 <div class="progress2"> 
-                    <div class="camo2bar" style='width:{{ ( data["camos"][1]["progress"] / data["camos"][1]["total"] ) * 100 }}%'></div> 
+                    <div class="camo2bar" style='width:{{ ( data["camos"][1]["progress"] / data["camos"][1]["max"] ) * 100 }}%'></div> 
                 </div> 
                 <div class='camo2prog'>
-                    <p style='display:inline;' id='camo2prog'>{{ data["camos"][1]["progress"] }}/{{ data["camos"][1]["total"] }}</p>
+                    <p style='display:inline;' id='camo2prog'>{{ data["camos"][1]["progress"] }}/{{ data["camos"][1]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][1]["progress"] == data["camos"][1]["total"] %}
+            {% elif  data["camos"][1]["progress"] == data["camos"][1]["max"] %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:211px;left:444px;'>   
             {% else %}
                 <div class='camo2prog'>
@@ -342,12 +342,12 @@
             </div>
             {% if  data["camos"][2]["progress"] != 0 %}
                 <div class="progress3"> 
-                    <div class="camo3bar" style='width:{{ ( data["camos"][2]["progress"] / data["camos"][2]["total"] ) * 100 }}%'></div> 
+                    <div class="camo3bar" style='width:{{ ( data["camos"][2]["progress"] / data["camos"][2]["max"] ) * 100 }}%'></div> 
                 </div> 
                 <div class='camo3prog'>
-                    <p style='display:inline;' id='camo3prog'>{{ data["camos"][2]["progress"] }}/{{ data["camos"][2]["total"] }}</p>
+                    <p style='display:inline;' id='camo3prog'>{{ data["camos"][2]["progress"] }}/{{ data["camos"][2]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][2]["progress"] == data["camos"][2]["total"] %}
+            {% elif  data["camos"][2]["progress"] == data["camos"][2]["max"] %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:287px;left:444px;'>   
             {% else %}
                 <div class='camo3prog'>
@@ -361,12 +361,12 @@
             </div>
             {% if  data["camos"][3]["progress"] != 0 %}
                 <div class="progress4"> 
-                    <div class="camo4bar" style='width:{{ ( data["camos"][3]["progress"] / data["camos"][3]["total"] ) * 100 }}%'></div> 
+                    <div class="camo4bar" style='width:{{ ( data["camos"][3]["progress"] / data["camos"][3]["max"] ) * 100 }}%'></div> 
                 </div> 
                 <div class='camo4prog'>
-                    <p style='display:inline;' id='camo4prog'>{{ data["camos"][3]["progress"] }}/{{ data["camos"][3]["total"] }}</p>
+                    <p style='display:inline;' id='camo4prog'>{{ data["camos"][3]["progress"] }}/{{ data["camos"][3]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][3]["progress"] == data["camos"][3]["total"] %}
+            {% elif  data["camos"][3]["progress"] == data["camos"][3]["max"] %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:363px;left:444px;'>   
             {% else %}
                 <div class='camo4prog'>

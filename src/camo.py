@@ -32,13 +32,8 @@ def get_camo_stats(typeofcamo="none",username="none"):
 
 def get_new_camo_stats(typeofcamo="none",username="none"):
     url = f"https://api.codmunity.gg/users/camo/{typeofcamo}/{username}"
-    try: r = requests.get(url,timeout=10)
-    except: return default_data(typeofcamo,username)
-    try: data = r.json()
-    except: return default_data(typeofcamo,username)
-    if "username" not in data.keys():
-        return default_data(typeofcamo,username) 
-    # Camo Titles
+    r = requests.get(url,timeout=10)
+    data = r.json()
     camos = data['camos']
     camnew = []
     for c in camos:
