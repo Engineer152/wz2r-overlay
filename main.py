@@ -87,14 +87,14 @@ def wsow_test(region: str,teamname: str):
         return render_template("error.html")
 
 @app.route("/backend-data/<game>/<gamertag>", methods=['GET'])
-def new_data(game,gamertag):
+def ranked_data(game,gamertag):
     data = get_ranked_stats(game,gamertag.lower())
     data['version'] = version
     return data
 
 #TEMP FIX REMOVE AFTER 7/30/2024
 @app.route("/backend-data/<gamertag>", methods=['GET'])
-def data(gamertag):
+def old_data(gamertag):
     data = get_ranked_stats("wz2r",gamertag.lower())
     data['version'] = version
     return data
