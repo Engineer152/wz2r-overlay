@@ -29,3 +29,24 @@ def get_camo_stats(typeofcamo="none",username="none"):
     if "imageUrlUser" not in data:
         data["imageUrlUser"] = "https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-150x150.png"
     return data
+
+def get_new_camo_stats(typeofcamo="none",username="none"):
+    url = f"https://api.codmunity.gg/users/camo/{typeofcamo}/{username}"
+    try: r = requests.get(url,timeout=10)
+    except: return default_data(typeofcamo,username)
+    try: data = r.json()
+    except: return default_data(typeofcamo,username)
+    if "username" not in data.keys():
+        return default_data(typeofcamo,username) 
+    # Camo Titles
+    camos = data['camos']
+    camnew = []
+    for c in camos:
+        c['title'] = c['title'].upper()
+        if c['progress'] == "":
+            c['progress']="0"
+        camnew.append(c)
+    data['camos'] = camnew
+    if "imageUrlUser" not in data:
+        data["imageUrlUser"] = "https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-150x150.png"
+    return data

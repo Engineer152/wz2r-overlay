@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from src.stats import get_ranked_stats
-from src.camo import get_camo_stats
+from src.camo import get_camo_stats, get_new_camo_stats
 from src.wsow import get_wsow_stats
 from src.database import add_user
 from turbo_flask import Turbo
@@ -55,6 +55,16 @@ def overlay(game,language,type,animated,gamertag):
 def camo(typeofcamo,username):
     data = get_camo_stats(typeofcamo,username)
     path_file = f"camo/english/CAMO-STATIC.html"
+    if exists("./templates/"+path_file):
+        return render_template(path_file, version = version, data = data, bg_color = bg_color, name_color = name_color, rank_color = rank_color)
+    else:
+        return render_template("error.html")
+    
+# NEW Camos camo/{typeofcamo}/{username}
+@app.route("/camo-new/<typeofcamo>/<username>", methods=['GET'])
+def camo(typeofcamo,username):
+    data = get_new_camo_stats(typeofcamo,username)
+    path_file = f"camo/english/CAMO-NEW-STATIC-SM.html"
     if exists("./templates/"+path_file):
         return render_template(path_file, version = version, data = data, bg_color = bg_color, name_color = name_color, rank_color = rank_color)
     else:
