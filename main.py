@@ -62,7 +62,7 @@ def camo(typeofcamo,username):
     
 # NEW Camos camo/{typeofcamo}/{username}
 @app.route("/camo-new/<typeofcamo>/<username>", methods=['GET'])
-def camo(typeofcamo,username):
+def camo_new(typeofcamo,username):
     data = get_new_camo_stats(typeofcamo,username)
     path_file = f"camo/english/CAMO-NEW-STATIC-SM.html"
     if exists("./templates/"+path_file):
