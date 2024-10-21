@@ -43,6 +43,8 @@
         }
 
         .outterbg1 { 
+            position: absolute;
+            z-index: 999;
             background: '{{ data["camos"][0]["image"] }}';
             top: 115px;
             left: 19px;
@@ -52,6 +54,8 @@
         } 
   
         .innerbg1 { 
+            position: absolute;
+            z-index: 999;
             background-color: #131313; 
             padding: 6PX;
             border-radius: 20px;
@@ -85,6 +89,8 @@
         }
         
         .progress1 { 
+            position: absolute;
+            z-index: 999;
             background-color: #D9D9D9; 
             top: 138px;
             left: 203px;
@@ -94,12 +100,16 @@
         } 
   
         .camo1bar { 
+            position: absolute;
+            z-index: 999;
             background-color: #75C017;
             padding: 1%;
             border-radius: 20px; 
         }
 
         .outterbg2 { 
+            position: absolute;
+            z-index: 999;
             background: "{{ data['camos'][1]['image'] }}";
             top: 191px;
             left: 19px;
@@ -109,6 +119,8 @@
         } 
   
         .innerbg2 { 
+            position: absolute;
+            z-index: 999;
             background-color: #131313; 
             padding: 6PX;
             border-radius: 20px;
@@ -142,6 +154,8 @@
         }
         
         .progress2 { 
+            position: absolute;
+            z-index: 999;
             background-color: #D9D9D9; 
             top: 214px;
             left: 203px;
@@ -151,12 +165,16 @@
         } 
   
         .camo2bar { 
+            position: absolute;
+            z-index: 999;
             background-color: #75C017;
             padding: 1%;
             border-radius: 20px; 
         }
 
         .outterbg3 { 
+            position: absolute;
+            z-index: 999;
             background: "{{ data['camos'][2]['image'] }}";
             top: 267px;
             left: 19px;
@@ -166,6 +184,8 @@
         } 
   
         .innerbg3 { 
+            position: absolute;
+            z-index: 999;
             background-color: #131313; 
             padding: 6PX;
             border-radius: 20px;
@@ -199,6 +219,8 @@
         }
         
         .progress3 { 
+            position: absolute;
+            z-index: 999;
             background-color: #D9D9D9; 
             top: 290px;
             left: 203px;
@@ -208,12 +230,15 @@
         } 
   
         .camo3bar { 
+            position: absolute;
             background-color: #75C017;
             padding: 1%;
             border-radius: 20px; 
         }
 
         .outterbg4 { 
+            position: absolute;
+            z-index: 999;
             background: "{{ data['camos'][3]['image'] }}";
             top: 343px;
             left: 19px;
@@ -223,6 +248,8 @@
         } 
   
         .innerbg4 { 
+            position: absolute;
+            z-index: 999;
             background-color: #131313; 
             padding: 6PX;
             border-radius: 20px;
@@ -251,11 +278,13 @@
             font-family: 'Poppins3';
             color: #75C017;
             font-size: 14px;
-            text-align: right;
+            text-align: left;
             width: 62px;
         }
         
         .progress4 { 
+            position: absolute;
+            z-index: 999;
             background-color: #D9D9D9; 
             top: 366px;
             left: 203px;
@@ -265,6 +294,8 @@
         } 
   
         .camo4bar { 
+            position: absolute;
+            z-index: 999;
             background-color: #75C017;
             padding: 1%;
             border-radius: 20px; 
@@ -272,6 +303,7 @@
 
         .icon {
             position: absolute;
+            z-index: 999;
             vertical-align: top;
             align-content: right;
             z-index: 999;
@@ -283,6 +315,7 @@
 
         .icon1 {
             position: absolute;
+            z-index: 999;
             vertical-align: top;
             align-content: right;
             z-index: 999;
@@ -303,9 +336,6 @@
                 <p style='display:inline;' id='camo1'>{{ data["camos"][0]["title"] }}</p>
             </div>
             {% if  data["camos"][0]["progress"] != 0 %}
-                <div class="progress1"> 
-                    <div class="camo1bar" style='width:{{ ( data["camos"][0]["progress"] / data["camos"][0]["max"] ) * 100 }}%'></div> 
-                </div> 
                 <div class='camo1prog'>
                     <p style='display:inline;' id='camo1prog'>{{ data["camos"][0]["progress"] }}/{{ data["camos"][0]["max"] }}</p>
                 </div>
@@ -322,9 +352,6 @@
                 <p style='display:inline;' id='camo2'>{{ data["camos"][1]["title"] }}</p>
             </div>
             {% if  data["camos"][1]["progress"] != 0 %}
-                <div class="progress2"> 
-                    <div class="camo2bar" style='width:{{ ( data["camos"][1]["progress"] / data["camos"][1]["max"] ) * 100 }}%'></div> 
-                </div> 
                 <div class='camo2prog'>
                     <p style='display:inline;' id='camo2prog'>{{ data["camos"][1]["progress"] }}/{{ data["camos"][1]["max"] }}</p>
                 </div>
@@ -341,9 +368,6 @@
                 <p style='display:inline;' id='camo3'>{{ data["camos"][2]["title"] }}</p>
             </div>
             {% if  data["camos"][2]["progress"] != 0 %}
-                <div class="progress3"> 
-                    <div class="camo3bar" style='width:{{ ( data["camos"][2]["progress"] / data["camos"][2]["max"] ) * 100 }}%'></div> 
-                </div> 
                 <div class='camo3prog'>
                     <p style='display:inline;' id='camo3prog'>{{ data["camos"][2]["progress"] }}/{{ data["camos"][2]["max"] }}</p>
                 </div>
@@ -360,9 +384,6 @@
                 <p style='display:inline;' id='camo4'>{{ data["camos"][3]["title"] }}</p>
             </div>
             {% if  data["camos"][3]["progress"] != 0 %}
-                <div class="progress4"> 
-                    <div class="camo4bar" style='width:{{ ( data["camos"][3]["progress"] / data["camos"][3]["max"] ) * 100 }}%'></div> 
-                </div> 
                 <div class='camo4prog'>
                     <p style='display:inline;' id='camo4prog'>{{ data["camos"][3]["progress"] }}/{{ data["camos"][3]["max"] }}</p>
                 </div>
