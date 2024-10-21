@@ -117,7 +117,7 @@ def camo_data(typeofcamo,username):
     return data
 
 @app.route("/update-camo-new/<typeofcamo>/<username>", methods=['GET'])
-def camo_data(typeofcamo,username):
+def camo_new_data(typeofcamo,username):
     data = get_new_camo_stats(typeofcamo,username)
     data['version'] = version
     return data
