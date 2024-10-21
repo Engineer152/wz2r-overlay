@@ -66,7 +66,7 @@ def camo_new(typeofcamo,username):
     data = get_new_camo_stats(typeofcamo,username)
     path_file = f"camo/english/CAMO-NEW-STATIC-SM.html"
     if exists("./templates/"+path_file):
-        return render_template(path_file, version = version, data = data, bg_color = bg_color, name_color = name_color, rank_color = rank_color)
+        return render_template(path_file, version = version, data = data, typeofcamo=typeofcamo, username=username)
     else:
         return render_template("error.html")
 
