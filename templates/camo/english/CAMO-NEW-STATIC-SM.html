@@ -275,7 +275,7 @@
                 <div class='camo1prog'>
                     <p style='display:inline;' id='camo1prog'>{{ data["camos"][0]["progress"] }}/{{ data["camos"][0]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][0]["progress"] == data["camos"][0]["max"] %}
+            {% elif  data["camos"][0]["progress"]|string() == data["camos"][0]["max"]|string() %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:135px;left:444px;'>   
             {% else %}
                 <div class='camo1prog'>
@@ -291,7 +291,7 @@
                 <div class='camo2prog'>
                     <p style='display:inline;' id='camo2prog'>{{ data["camos"][1]["progress"] }}/{{ data["camos"][1]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][1]["progress"] == data["camos"][1]["max"] %}
+            {% elif  data["camos"][1]["progress"]|string() == data["camos"][1]["max"]|string() %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:211px;left:444px;'>   
             {% else %}
                 <div class='camo2prog'>
@@ -307,7 +307,7 @@
                 <div class='camo3prog'>
                     <p style='display:inline;' id='camo3prog'>{{ data["camos"][2]["progress"] }}/{{ data["camos"][2]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][2]["progress"] == data["camos"][2]["max"] %}
+            {% elif  data["camos"][2]["progress"]|string() == data["camos"][2]["max"]|string() %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:287px;left:444px;'>   
             {% else %}
                 <div class='camo3prog'>
@@ -323,7 +323,7 @@
                 <div class='camo4prog'>
                     <p style='display:inline;' id='camo4prog'>{{ data["camos"][3]["progress"] }}/{{ data["camos"][3]["max"] }}</p>
                 </div>
-            {% elif  data["camos"][3]["progress"] == data["camos"][3]["max"] %}
+            {% elif  data["camos"][3]["progress"]|string() == data["camos"][3]["max"]|string() %}
                 <img id='icon1' src="{{url_for('static',filename='files/COMPLETED.png')}}" alt="Icon" class="icon1" style='display:inline;top:363px;left:444px;'>   
             {% else %}
                 <div class='camo4prog'>
@@ -332,9 +332,24 @@
             {% endif %}
         </div>
         <div style="z-index:1;">
-            <img src="{{url_for('static',filename='files/CAMO_MASTERY_SM.png')}}" alt='horizontal-overlay' border='0'>
+            <img src="{{url_for('static',filename='files/CAMO_MASTERY_4X.png')}}" style="width:25%;height:50%;" alt='horizontal-overlay' border='0'>
         </div>
     </div>
+
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload(true)
+                    return
+                };
+            };
+            xhttp.overrideMimeType("application/json");
+            xhttp.open("GET", "/update-camo-new/{{data['camoId']}}/{{data['username']}}", true);
+            xhttp.send();
+        } setInterval(loadData, 30000);
+    </script>
 
 </body>
 
