@@ -3,6 +3,7 @@ import requests
 # example = {'camoId': 'mwii', 'title': 'MW2 Multiplayer', 'imageUrlUser': 'https://assets.codmunity.gg/profiles/135f77d1-7c47-11ee-ac49-4f8d923a28fa.webp', 'imageUrlMasteryCamo': 'https://assets.codmunity.gg/images/camo4.png', 'username': 'legend79', 'displayName': 'Legend79', 'camos': [{'title': 'Gold', 'progress': 32, 'total': 77}, {'title': 'Platinium', 'progress': 25, 'total': 77}, {'title': 'Polyatomic', 'progress': 0, 'total': 77}, {'title': 'ORION', 'progress': 0, 'total': 51}]}
 
 default = {'camoId': 'none', 'title': 'N/A', 'imageUrlUser': 'https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-150x150.png', 'imageUrlMasteryCamo': '', 'username': 'none', 'displayName': 'N/A', 'camos': [{'title': 'N/A', 'progress': 0, 'total': 0}, {'title': 'N/A', 'progress': 0, 'total': 0}, {'title': 'N/A', 'progress': 0, 'total': 0}, {'title': 'N/A', 'progress': 0, 'total': 0}]}
+default_new = {"game":"https://assets.codmunity.gg/optimized/BO6-White.webp","camos":[{"title":"Gold","image":"https://assets.codmunity.gg/optimized/Camo_Gold.webp","max":33,"progress":0},{"title":"Diamond","image":"https://assets.codmunity.gg/optimized/Camo_Diamond.webp","max":33,"progress":0},{"title":"Dark Spine","image":"https://assets.codmunity.gg/optimized/Camo_DarkSpine.webp","max":33,"progress":0},{"title":"Dark Matter","image":"https://assets.codmunity.gg/optimized/Camo_DarkMatter.webp","max":33,"progress":0}]}
 
 def default_data(typeofcamo,username):
     default['camoId']=typeofcamo
@@ -32,8 +33,10 @@ def get_camo_stats(typeofcamo="none",username="none"):
 
 def get_new_camo_stats(typeofcamo="none",username="none"):
     url = f"https://api.codmunity.gg/users/camo/{typeofcamo}/{username}"
-    r = requests.get(url,timeout=10)
-    data = r.json()
+    try: r = requests.get(url,timeout=10)
+    except: return default_new
+    try: data = r.json()
+    except: return default_new
     camos = data['camos']
     camnew = []
     for c in camos:
