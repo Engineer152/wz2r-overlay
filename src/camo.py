@@ -37,6 +37,8 @@ def get_new_camo_stats(typeofcamo="none",username="none"):
     except: return default_new
     try: data = r.json()
     except: return default_new
+    if data == {"message":"User not found"}:
+        return default_new
     camos = data['camos']
     camnew = []
     for c in camos:
