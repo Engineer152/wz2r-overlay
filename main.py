@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect
 from src.stats import get_ranked_stats
 from src.camo import get_camo_stats, get_new_camo_stats
 from src.wsow import get_wsow_stats
-from src.database import add_user
 from turbo_flask import Turbo
 import threading
 import time
