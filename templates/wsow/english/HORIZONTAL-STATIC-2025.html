@@ -87,7 +87,7 @@
             text-align: -webkit-left;
             align-content: center;
             top: 15px;
-            left: 222px;
+            left: 215px;
             margin-left: auto; 
             margin-right: auto;
             vertical-align: middle;
@@ -114,6 +114,9 @@
             height: 48px;
             font-family: 'Inter_ExtraBold';
             color: white;
+            font-size: 30px;
+        }
+        .rank p::first-letter{
             font-size: 30px;
         }
 
@@ -210,7 +213,7 @@
             z-index: 999;
             text-align: center;
             top: 103px;
-            left: 78px;
+            left: 84px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
@@ -224,7 +227,7 @@
     <div class="box" id="box">
         <div class="boxx" id="boxx">
             <div class='rank' id="rank">
-                <p style='display:inline'><p style="font-size:30">#</p>{{ rank }}</p> 
+                <p style='display:inline'>#{{ rank }}</p> 
             </div>
             <div class='players' id="players">
                 <p style='display:inline' id="players">{{ players[0] | upper }} - {{ players[1] | upper }} - {{ players[2] | upper }}</p> 
