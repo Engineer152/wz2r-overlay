@@ -265,7 +265,7 @@
                         window.location.reload(true)
                     };
                     if (jsonResponse['rank'] != -1) {
-                        document.getElementById("rank").innerHTML = <b style="font-size:30px;opacity:80%;">#</b> + jsonResponse['rank'];
+                        document.getElementById("rank").innerHTML = '<b style="font-size:30px;opacity:80%;">#</b>' + jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
                         if (jsonResponse['topPointsDiff'] < 0) {
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
@@ -285,7 +285,7 @@
             xhttp.send();
         } setInterval(loadData, 30000);
     </script>
-    <script>
+    <!-- <script>
         const getSize = (textLength, size, length) => {
             const baseSize = size
             const baseLength = length
@@ -304,7 +304,7 @@
             var newSize = getSize(boxt.textContent.length, 22, 37)
             document.getElementById("players").style.fontSize = newSize[0]
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
