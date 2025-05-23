@@ -231,14 +231,14 @@
             </div>
             {% if topPointsDiff|float < 0.0 %}
                 <div class='topPointsDiff' id="topPointsDiff">
-                    <p style='display:inline;color:red'>+{{ topPointsDiff }}</p> 
+                    <p style='display:inline;color:red'>+{{ topPointsDiff|abs }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
                     <img src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
                 </div>
             {% else %}
                 <div class='topPointsDiff' id="topPointsDiff">
-                    <p style='display:inline;color:green'>+{{ topPointsDiff }}</p> 
+                    <p style='display:inline;color:green'>+{{ topPointsDiff|abs }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
                     <img src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 

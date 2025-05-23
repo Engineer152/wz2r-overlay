@@ -14,7 +14,7 @@ def default_data(teamname):
     return default
 
 def get_wsow_stats(region,teamname):
-    dataout={'topPlace':0,'topPoints':0,'topPointsDiff':0,"kills":0}
+    dataout={'topPlace':0,'topPoints':0,'topPointsDiff':-150,"kills":0}
     if region.lower() == "eu":
         region = "emea"
     elif region.lower() == "global":
