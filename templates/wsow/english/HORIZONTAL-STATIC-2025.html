@@ -84,7 +84,7 @@
         .players {
             position: absolute;
             z-index: 999;
-            text-align: -webkit-center;
+            text-align: -webkit-left;
             align-content: center;
             top: 15px;
             left: 222px;
@@ -95,7 +95,7 @@
             margin-bottom: auto;
             width: 482px;
             height: 56px;
-            font-family: 'Inter_Regular';
+            font-family: 'Inter_SemiBold';
             color: white;
             font-size: 22px;
         }
@@ -224,7 +224,7 @@
     <div class="box" id="box">
         <div class="boxx" id="boxx">
             <div class='rank' id="rank">
-                <p style='display:inline'>#{{ rank }}</p> 
+                <p style='display:inline'><p style="font-size:30">#</p>{{ rank }}</p> 
             </div>
             <div class='players' id="players">
                 <p style='display:inline' id="players">{{ players[0] | upper }} - {{ players[1] | upper }} - {{ players[2] | upper }}</p> 
