@@ -87,13 +87,13 @@
             text-align: -webkit-left;
             align-content: center;
             top: 15px;
-            left: 215px;
+            left: 230px;
             margin-left: auto; 
             margin-right: auto;
             vertical-align: middle;
             margin-top: auto;
             margin-bottom: auto;
-            width: 482px;
+            width: 470px;
             height: 56px;
             font-family: 'Inter_SemiBold';
             color: white;
@@ -227,10 +227,10 @@
     <div class="box" id="box">
         <div class="boxx" id="boxx">
             <div class='rank' id="rank">
-                <p style='display:inline'>#{{ rank }}</p> 
+                <p style='display:inline'><b style="font-size:30px;">#</b>{{ rank }}</p> 
             </div>
             <div class='players' id="players">
-                <p style='display:inline' id="players">{{ players[0] | upper }} - {{ players[1] | upper }} - {{ players[2] | upper }}</p> 
+                <p style='display:inline' id="players">{{ players[0] }} - {{ players[1] }} - {{ players[2] }}</p> 
             </div>
             {% if topPointsDiff|float < 0.0 %}
                 <div class='topPointsDiff' id="topPointsDiff">
