@@ -117,6 +117,23 @@
             font-size: 40px;
         }
 
+        .rankText {
+            position: absolute;
+            z-index: 999;
+            top: 70px;
+            left: 103.5px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 63px;
+            height: 27px;
+            font-family: 'Inter_SemiBold';
+            color: #B8B8B8;
+            font-size: 22px;
+        }
+
         .points {
             position: absolute;
             z-index: 999;
@@ -133,6 +150,24 @@
             font-family: 'Inter_SemiBold';
             color: white;
             font-size: 25px;
+        }
+
+        .pointsText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 500px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
         }
 
         .kills {
@@ -153,38 +188,22 @@
             font-size: 25px;
         }
 
-        .topPlace {
+        .killsText {
             position: absolute;
             z-index: 999;
             text-align: center;
-            top: 80px;
-            left: 689px;
+            top: 99px;
+            left: 657px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
             margin-bottom: auto;
-            width: 84px;
-            height: 25px;
-            font-family: 'Inter_SemiBold';
-            color: white;
-            font-size: 17px;
-        }
-
-        .topPoints {
-            position: absolute;
-            z-index: 999;
             text-align: center;
-            top: 80px;
-            left: 773px;
-            margin-left: auto; 
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-            width: 89px;
-            height: 25px;
-            font-family: 'Inter_SemiBold';
-            color: white;
-            font-size: 17px;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
         }
 
         .topPointsDiff {
@@ -203,6 +222,24 @@
             font-family: 'Inter_Medium';
             color: white;
             font-size: 25px;
+        }
+
+        .topPointsDiffText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
         }
 
         .indicator {
@@ -226,8 +263,14 @@
             <div class='rank' id="rank">
                 <p style='display:inline'><b style="font-size:30px;opacity:80%;">#</b>{{ rank }}</p> 
             </div>
+            <div class='rankText' id="rankText">
+                <p style='display:inline'>RANK</p> 
+            </div>
             <div class='players' id="players">
                 <p style='display:inline' id="players">{{ players[0] }} - {{ players[1] }} - {{ players[2] }}</p> 
+            </div>
+            <div class='topPointsDiffText' id="topPointsDiffText">
+                <p style='display:inline'>Pts</p> 
             </div>
             {% if topPointsDiff|float < 0.0 %}
                 <div class='topPointsDiff' id="topPointsDiff">
@@ -247,8 +290,14 @@
             <div class='points' id="points">
                 <p style='display:inline'>{{ points }}</p> 
             </div>
+            <div class='pointsText' id="pointsText">
+                <p style='display:inline'>Pts</p> 
+            </div>
             <div class='kills' id="kills">
                 <p style='display:inline'>{{ kills }}</p> 
+            </div>
+            <div class='killsText' id="killsText">
+                <p style='display:inline'>Kills</p> 
             </div>
         </div>
         <div class="bg_image" style="z-index:1;">
@@ -270,10 +319,10 @@
                         document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                         if (jsonResponse['topPointsDiff'] < 0) {
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
-                            document.getElementById("indicator").style.color = "red" 
+                            document.getElementById("topPointsDiff").style.color = "red" 
                         } else {
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
-                            document.getElementById("indicator").style.color = "green" 
+                            document.getElementById("topPointsDiff").style.color = "green" 
                         };
                         document.getElementById("kills").innerHTML = jsonResponse['kills'];
                         return;
