@@ -267,6 +267,7 @@
                     if (jsonResponse['rank'] != -1) {
                         document.getElementById("rank").innerHTML = '<b style="font-size:30px;opacity:80%;">#</b>' + jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
+                        document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                         if (jsonResponse['topPointsDiff'] < 0) {
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
                             document.getElementById("indicator").style.color = "red" 
@@ -274,7 +275,6 @@
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
                             document.getElementById("indicator").style.color = "green" 
                         };
-                        document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                         document.getElementById("kills").innerHTML = jsonResponse['kills'];
                         return;
                     };
