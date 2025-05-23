@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X32DVJJ3HE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X32DVJJ3HE');
+    </script>
+    <title>WSOW Overlay: {{ teamname }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet"
+        href="{{url_for('static',filename='fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css')}}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html{
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        .bg_image {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @font-face {
+            font-family: 'Inter_Regular';
+            src: url("{{url_for('static',filename='fonts/Inter-Regular.ttf')}}");
+        }
+
+        @font-face {
+            font-family: 'Inter_Medium';
+            src: url("{{url_for('static',filename='fonts/Inter-Medium.ttf')}}");
+        }
+
+        @font-face {
+            font-family: 'Inter_SemiBold';
+            src: url("{{url_for('static',filename='fonts/Inter-SemiBold.ttf')}}");
+        }
+
+        @font-face {
+            font-family: 'Inter_ExtraBold';
+            src: url("{{url_for('static',filename='fonts/Inter-ExtraBold.ttf')}}");
+        }
+
+        .teamname {
+            position: absolute;
+            z-index: 999;
+            text-align: -webkit-center;
+            align-content: center;
+            top: 15px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 323px;
+            height: 27px;
+            font-family: 'Inter_Regular';
+            color: white;
+            font-size: 22px;
+        }
+
+        .players {
+            position: absolute;
+            z-index: 999;
+            text-align: -webkit-center;
+            align-content: center;
+            top: 15px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 323px;
+            height: 27px;
+            font-family: 'Inter_Regular';
+            color: white;
+            font-size: 22px;
+        }
+        
+        .rank {
+            position: absolute;
+            z-index: 999;
+            top: 22px;
+            left: 62px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 146px;
+            height: 48px;
+            font-family: 'Inter_ExtraBold';
+            color: white;
+            font-size: 30px;
+        }
+
+        .points {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 96px;
+            left: 387px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 113px;
+            height: 30px;
+            font-family: 'Inter_SemiBold';
+            color: white;
+            font-size: 25px;
+        }
+
+        .kills {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 96px;
+            left: 552px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 113px;
+            height: 30px;
+            font-family: 'Inter_SemiBold';
+            color: white;
+            font-size: 25px;
+        }
+
+        .topPlace {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 80px;
+            left: 689px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 84px;
+            height: 25px;
+            font-family: 'Inter_SemiBold';
+            color: white;
+            font-size: 17px;
+        }
+
+        .topPoints {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 80px;
+            left: 773px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 89px;
+            height: 25px;
+            font-family: 'Inter_SemiBold';
+            color: white;
+            font-size: 17px;
+        }
+
+        .topPointsDiff {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 96px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 113px;
+            height: 30px;
+            font-family: 'Inter_Medium';
+            color: white;
+            font-size: 25px;
+        }
+
+        .indicator {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 103px;
+            left: 84px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="boxx" id="boxx">
+            <div class='rank' id="rank">
+                <p style='display:inline'>#{{ rank }}</p> 
+            </div>
+            <div class='players' id="players">
+                <p style='display:inline' id="players">{{ players[0] | upper }} - {{ players[1] | upper }} - {{ players[2] | upper }}</p> 
+            </div>
+            {% if topPointsDiff|float < 0.0 %}
+                <div class='topPointsDiff' id="topPointsDiff">
+                    <p style='display:inline;color:red'>+{{ topPointsDiff }}</p> 
+                </div>
+                <div class='indicator' id="indicator">
+                    <img src="{{url_for('static',filename='files/WSOW_Not_Qualified.png')}}" alt="NOT QUALIFIED"> 
+                </div>
+            {% else %}
+                <div class='topPointsDiff' id="topPointsDiff">
+                    <p style='display:inline;color:green'>+{{ topPointsDiff }}</p> 
+                </div>
+                <div class='indicator' id="indicator">
+                    <img src="{{url_for('static',filename='files/WSOW_On_Track.png')}}" alt="ON TRACK"> 
+                </div>
+            {% endif %}
+            <div class='points' id="points">
+                <p style='display:inline'>{{ points }}</p> 
+            </div>
+            <div class='kills' id="kills">
+                <p style='display:inline'>{{ kills }}</p> 
+            </div>
+        </div>
+        <div class="bg_image" style="z-index:1;">
+            <img src="{{url_for('static',filename='files/WSOW_STATIC_TEAM_DEFAULT.png')}}" width="1032" alt='horizontal-overlay'>
+        </div>
+    </div>
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonResponse = JSON.parse(this.responseText);
+                    if (jsonResponse['version'] != "{{version}}") {
+                        window.location.reload(true)
+                    };
+                    if (jsonResponse['rank'] != -1) {
+                        document.getElementById("rank").innerHTML = jsonResponse['rank'];
+                        document.getElementById("points").innerHTML = jsonResponse['points'];
+                        document.getElementById("topPlace").innerHTML = jsonResponse['topPlace'];
+                        document.getElementById("topPoints").innerHTML = jsonResponse['topPoints'];
+                        document.getElementById("topPointsDiff").innerHTML = jsonResponse['topPointsDiff'];
+                        document.getElementById("kills").innerHTML = jsonResponse['kills'];
+                        return;
+                    };
+                };
+            };
+            xhttp.overrideMimeType("application/json");
+            xhttp.open("GET", "/update-wsow/2025/{{region}}/{{teamname}}", true);
+            xhttp.send();
+        } setInterval(loadData, 30000);
+    </script>
+    <script>
+        const getSize = (textLength, size, length) => {
+            const baseSize = size
+            const baseLength = length
+            if (baseLength < textLength) {
+                fontSize = baseSize - (textLength - baseLength)
+                topDist = 10 + 2*(textLength - baseLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            } else if (baseLength > textLength) {
+                fontSize = baseSize + (baseLength - textLength)
+                topDist = 10 - 2*(baseLength - textLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            }
+        };
+        const boxest = document.querySelectorAll('.players p')
+        boxest.forEach(boxt => {
+            var newSize = getSize(boxt.textContent.length, 24, 14)
+            document.getElementById("players").style.fontSize = newSizet[0]
+        });
+    </script>
+</body>
+
+</html>

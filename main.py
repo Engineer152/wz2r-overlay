@@ -86,12 +86,12 @@ def wsow(region: str,teamname: str):
     
 @app.route("/test/wsow/<region>/<teamname>", methods=['GET'])
 def wsow_test(region: str,teamname: str):
-    path_file = f"wsow/english/HORIZONTAL-STATIC.html"
+    path_file = f"wsow/english/HORIZONTAL-STATIC-2025.html"
     try: text = request.args.get('text', default="")
     except: pass
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
-        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
+        return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], kills=data['kills'], topPlace=data['topPlace'], topPoints=data['topPoints'], topPointsDiff=data['topPointsDiff'], region=region, textnote=text)
     else:
         return render_template("error.html")
 

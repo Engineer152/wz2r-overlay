@@ -6,7 +6,7 @@ headers = {
     "x-api-key": os.environ['x-api-key']
 }
 
-default = {"teamName":"none","players":[{"name":"Player 1"},{"name":"Player 2"},{"name":"Player 3"}],"rank":0,"points":0,"topPlace":'-',"topPoints":'-'}
+default = {"teamName":"none","players":[{"name":"Player 1"},{"name":"Player 2"},{"name":"Player 3"}],"rank":0,"points":0,"kills":0,'topPlace':0,'topPoints':0,'topPoints':0,}
 # default = {"teamName":"none","players":["Player 1","Player 2","Player 3"],"rank":0,"points":0,"qualifyingThreshold":'-',"lastQualifyingTeamPoints":'-'}
 
 def default_data(teamname):
@@ -14,7 +14,7 @@ def default_data(teamname):
     return default
 
 def get_wsow_stats(region,teamname):
-    dataout={'topPlace':'-','topPoints':'-'}
+    dataout={'topPlace':0,'topPoints':0,'topPointsDiff':0,"kills":0}
     if region.lower() == "eu":
         region = "emea"
     elif region.lower() == "global":
@@ -35,7 +35,9 @@ def get_wsow_stats(region,teamname):
         players.extend(['-','-','-'])
     dataout['players']=players
     dataout['rank']=data['rank']
+    dataout['kills']=data['kills']
     dataout['points']=data['points']
+    dataout['topPointsDiff']=data['points'] - data['topPoints']
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
