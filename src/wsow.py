@@ -38,8 +38,8 @@ def get_wsow_stats(region,teamname):
     try: dataout['kills']=data['kills']
     except: dataout['kills']=0
     dataout['points']=data['points']
-    dataout['topPointsDiff']=data['points'] - data['topPoints']
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
+        dataout['topPointsDiff']=data['points'] - data['lastQualifyingTeamPoints']
     return dataout
