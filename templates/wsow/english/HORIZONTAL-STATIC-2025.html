@@ -274,7 +274,7 @@
                             document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
                             document.getElementById("indicator").style.color = "green" 
                         };
-                        document.getElementById("topPointsDiff").innerHTML = "+" + abs(jsonResponse['topPointsDiff']);
+                        document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                         document.getElementById("kills").innerHTML = jsonResponse['kills'];
                         return;
                     };
