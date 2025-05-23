@@ -93,8 +93,8 @@
             vertical-align: middle;
             margin-top: auto;
             margin-bottom: auto;
-            width: 323px;
-            height: 27px;
+            width: 482px;
+            height: 56px;
             font-family: 'Inter_Regular';
             color: white;
             font-size: 22px;
@@ -146,7 +146,7 @@
             margin-top: auto;
             margin-bottom: auto;
             text-align: center;
-            width: 113px;
+            width: 103px;
             height: 30px;
             font-family: 'Inter_SemiBold';
             color: white;
@@ -210,7 +210,7 @@
             z-index: 999;
             text-align: center;
             top: 103px;
-            left: 84px;
+            left: 78px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
@@ -234,14 +234,14 @@
                     <p style='display:inline;color:red'>+{{ topPointsDiff }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
-                    <img src="{{url_for('static',filename='files/WSOW_Not_Qualified.png')}}" alt="NOT QUALIFIED"> 
+                    <img src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
                 </div>
             {% else %}
                 <div class='topPointsDiff' id="topPointsDiff">
                     <p style='display:inline;color:green'>+{{ topPointsDiff }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
-                    <img src="{{url_for('static',filename='files/WSOW_On_Track.png')}}" alt="ON TRACK"> 
+                    <img src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
                 </div>
             {% endif %}
             <div class='points' id="points">
@@ -252,7 +252,7 @@
             </div>
         </div>
         <div class="bg_image" style="z-index:1;">
-            <img src="{{url_for('static',filename='files/WSOW_STATIC_TEAM_DEFAULT.png')}}" width="1032" alt='horizontal-overlay'>
+            <img src="{{url_for('static',filename='files/WSOW_STATIC_TEAM_DEFAULT.png')}}" width="714" alt='horizontal-overlay'>
         </div>
     </div>
     <script>
