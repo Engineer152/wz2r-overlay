@@ -208,9 +208,9 @@
         .indicator {
             position: absolute;
             z-index: 999;
-            text-align: center;
             top: 103px;
             left: 84px;
+            width: 102px;
             margin-left: auto; 
             margin-right: auto;
             margin-top: auto;
@@ -234,14 +234,14 @@
                     <p style='display:inline;color:red'>+{{ topPointsDiff|abs }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
-                    <img src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
+                    <img  id='indicator' src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
                 </div>
             {% else %}
                 <div class='topPointsDiff' id="topPointsDiff">
                     <p style='display:inline;color:green'>+{{ topPointsDiff|abs }}</p> 
                 </div>
                 <div class='indicator' id="indicator">
-                    <img src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
+                    <img id='indicator' src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
                 </div>
             {% endif %}
             <div class='points' id="points">
@@ -265,11 +265,16 @@
                         window.location.reload(true)
                     };
                     if (jsonResponse['rank'] != -1) {
-                        document.getElementById("rank").innerHTML = jsonResponse['rank'];
+                        document.getElementById("rank").innerHTML = <b style="font-size:30px;opacity:80%;">#</b> + jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
-                        document.getElementById("topPlace").innerHTML = jsonResponse['topPlace'];
-                        document.getElementById("topPoints").innerHTML = jsonResponse['topPoints'];
-                        document.getElementById("topPointsDiff").innerHTML = jsonResponse['topPointsDiff'];
+                        if (jsonResponse['topPointsDiff'] < 0) {
+                            document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
+                            document.getElementById("indicator").style.color = "red" 
+                        } else {
+                            document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
+                            document.getElementById("indicator").style.color = "green" 
+                        }
+                        document.getElementById("topPointsDiff").innerHTML = "+" + abs(jsonResponse['topPointsDiff']);
                         document.getElementById("kills").innerHTML = jsonResponse['kills'];
                         return;
                     };
