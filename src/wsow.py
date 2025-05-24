@@ -1,5 +1,6 @@
 import os
 import requests
+import validators
 
 base_url = "https://api.codmunity.gg/wsow/overlay/"
 headers = {
@@ -14,7 +15,7 @@ def default_data(teamname):
     return default
 
 def get_wsow_stats(region,teamname):
-    dataout={'topPlace':0,'topPoints':0,'topPointsDiff':0,"kills":0}
+    dataout={'topPlace':0,'topPoints':0,'topPointsDiff':0,"kills":0,'backgroundImage':"https://i.ibb.co/cc5wGqD4/WSOW-STATIC-TEAM-DEFAULT.png"}
     if region.lower() == "eu":
         region = "emea"
     elif region.lower() == "global":
@@ -42,4 +43,7 @@ def get_wsow_stats(region,teamname):
         dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
         dataout['topPointsDiff']=data['points'] - data['lastQualifyingTeamPoints']
+    if 'backgroundImage' in data:
+        if validators.url(data['backgroundImage']):
+            dataout['backgroundImage'] = data['backgroundImage']
     return dataout
