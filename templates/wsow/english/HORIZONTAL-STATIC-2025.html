@@ -333,6 +333,8 @@
                                 document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
                                 document.getElementById("topPointsDiff").style.color = "green" 
                             };
+                            document.getElementById("rank").style.top = '22px'
+                            document.getElementById("rankText").style.top = '71px'
                         } else {
                             document.getElementById("topPointsDiff").innerHTML = '-'
                             if (document.getElementById("indicator")) {
@@ -352,7 +354,7 @@
         } setInterval(loadData, 30000);
     </script>
     <script>
-        window.load(function () {
+        window.addEventListener("load", (event) => {
             if ("{{topPoints}}" == 0) {
                 document.getElementById("rank").style.top = '35px'
                 document.getElementById("rankText").style.top = '84px'
