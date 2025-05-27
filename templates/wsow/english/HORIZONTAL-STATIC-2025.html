@@ -119,7 +119,7 @@
             height: 48px;
             font-family: 'HitmarkerNormal_Bold';
             color: white;
-            font-size: 40px;
+            font-size: 38px;
         }
 
         .rankText {
@@ -153,7 +153,7 @@
             width: 113px;
             height: 30px;
             font-family: 'HitmarkerNormal_Regular';
-            letter-spacing: 3%;
+            letter-spacing: 2px;
             color: white;
             font-size: 25px;
         }
@@ -190,7 +190,7 @@
             width: 103px;
             height: 30px;
             font-family: 'HitmarkerNormal_Regular';
-            letter-spacing: 3%;
+            letter-spacing: 2px;
             color: white;
             font-size: 25px;
         }
@@ -227,7 +227,7 @@
             width: 109px;
             height: 30px;
             font-family: 'HitmarkerNormal_Regular';
-            letter-spacing: 3%;
+            letter-spacing: 2px;
             color: white;
             font-size: 25px;
         }
@@ -350,12 +350,13 @@
                     if (jsonResponse['rank'] != -1) {
                         document.getElementById("rank").innerHTML = '<b style="font-size:30px;opacity:80%;">#</b>' + jsonResponse['rank'];
                         document.getElementById("points").innerHTML = jsonResponse['points'];
-                        document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                         if (jsonResponse['topPoints'] != 0) {
                             if (jsonResponse['topPointsDiff'] < 0) {
+                                document.getElementById("topPointsDiff").innerHTML = "-" + Math.abs(jsonResponse['topPointsDiff']);
                                 document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
                                 document.getElementById("topPointsDiff").style.color = "#FF1A41" 
                             } else {
+                                document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
                                 document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
                                 document.getElementById("topPointsDiff").style.color = "#52BB26" 
                             };
