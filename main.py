@@ -69,18 +69,14 @@ def camo_new(typeofcamo,username):
     else:
         return render_template("error.html")
 
-# WSOW Teams wsow/<year>/<type>/<reigon>/<teamname>
 @app.route("/wsow/<region>/<teamname>", methods=['GET'])
 def wsow(region: str,teamname: str):
-    path_file = f"wsow/english/HORIZONTAL-STATIC-NO-TEAM.html"
-    try: text = request.args.get('text', default="")
-    except: text = ""
+    path_file = f"wsow/english/HORIZONTAL-STATIC-2025.html"
+    # try: text = request.args.get('text', default="")
+    # except: text = ""
     data = get_wsow_stats(region,teamname)
     if exists("./templates/"+path_file):
-        if text != "":
-            return render_template(f"wsow/english/HORIZONTAL-STATIC-TEXT.html", version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
-        else:
-            return render_template(path_file, version=version, teamname=str(data['teamName'].strip()), players=data['players'], rank=data['rank'], points=data['points'], topPlace=data['topPlace'], topPoints=data['topPoints'], region=region, textnote=text)
+        return render_template(path_file, version=version, backgroundImage=data['backgroundImage'], teamname=str(data['teamName'].strip()), isteam=data['IsTeam'], players=data['players'], rank=data['rank'], points=data['points'], kills=data['kills'], topPlace=data['topPlace'], topPoints=data['topPoints'], topPointsDiff=data['topPointsDiff'], region=region, textnote=text)
     else:
         return render_template("error.html")
     
