@@ -42,7 +42,7 @@ def get_wsow_stats(region,teamname):
     except: dataout['IsTeam']="no"
     dataout['points']=round(data['points'],1)
     if 'qualifyingThreshold' in data:
-        dataout['topPlace'] = f"TOP{data['qualifyingThreshold']}"
+        dataout['topPlace'] = data['qualifyingThreshold']
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
         dataout['topPointsDiff']=round(data['points'] - data['lastQualifyingTeamPoints'],1)
     if 'backgroundImage' in data:
