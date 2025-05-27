@@ -335,7 +335,9 @@
                             };
                         } else {
                             document.getElementById("topPointsDiff").innerHTML = '-'
-                            document.getElementById("indicator").style.display='none';
+                            if (document.getElementById("indicator")) {
+                                document.getElementById("indicator").style.display = 'none';
+                            };
                             document.getElementById("rank").style.top = '35px'
                             document.getElementById("rankText").style.top = '84px'
                         }
@@ -350,12 +352,12 @@
         } setInterval(loadData, 30000);
     </script>
     <script>
-        function moverank() {
+        window.load(function () {
             if ("{{topPoints}}" == 0) {
                 document.getElementById("rank").style.top = '35px'
                 document.getElementById("rankText").style.top = '84px'
             };
-        };
+        });
     </script>
     <!-- <script>
         const getSize = (textLength, size, length) => {
