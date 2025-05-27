@@ -266,9 +266,11 @@
             <div class='rankText' id="rankText">
                 <p style='display:inline'>RANK</p> 
             </div>
+            {% if isteam != 'yes' %}
             <div class='players' id="players">
                 <p style='display:inline' id="players">{{ players[0] }} - {{ players[1] }} - {{ players[2] }}</p> 
             </div>
+            {% endif %}
             <div class='topPointsDiffText' id="topPointsDiffText">
                 <p style='display:inline'>Pts</p> 
             </div>
