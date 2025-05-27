@@ -294,7 +294,6 @@
                 <div class='topPointsDiff' id="topPointsDiff">
                     <p style='display:inline;'>-</p>
                 </div>
-                moverank()
             {% endif %}
             <div class='points' id="points">
                 <p style='display:inline'>{{ points }}</p> 
@@ -349,6 +348,8 @@
             xhttp.open("GET", "/update-wsow-team/{{region}}/{{teamname}}", true);
             xhttp.send();
         } setInterval(loadData, 30000);
+    </script>
+    <script>
         function moverank() {
             if ("{{topPoints}}" == 0) {
                 document.getElementById("rank").style.top = '35px'
