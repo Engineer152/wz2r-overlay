@@ -292,8 +292,9 @@
                 {% endif %}
             {% else %}
                 <div class='topPointsDiff' id="topPointsDiff">
-                    <p style='display:inline;'>-</p> 
+                    <p style='display:inline;'>-</p>
                 </div>
+                moverank()
             {% endif %}
             <div class='points' id="points">
                 <p style='display:inline'>{{ points }}</p> 
@@ -336,6 +337,8 @@
                         } else {
                             document.getElementById("topPointsDiff").innerHTML = '-'
                             document.getElementById("indicator").style.display='none';
+                            document.getElementById("rank").style.top = '35px'
+                            document.getElementById("rankText").style.top = '84px'
                         }
                         document.getElementById("kills").innerHTML = jsonResponse['kills'];
                         return;
@@ -346,6 +349,12 @@
             xhttp.open("GET", "/update-wsow-team/{{region}}/{{teamname}}", true);
             xhttp.send();
         } setInterval(loadData, 30000);
+        function moverank() {
+            if ("{{topPoints}}" == 0) {
+                document.getElementById("rank").style.top = '35px'
+                document.getElementById("rankText").style.top = '84px'
+            };
+        };
     </script>
     <!-- <script>
         const getSize = (textLength, size, length) => {
