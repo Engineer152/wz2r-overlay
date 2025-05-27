@@ -61,6 +61,11 @@
             font-family: 'Inter_ExtraBold';
             src: url("{{url_for('static',filename='fonts/Inter-ExtraBold.ttf')}}");
         }
+        
+        @font-face {
+            font-family: 'HitmarkerNormal_Bold';
+            src: url("{{url_for('static',filename='fonts/HitmarkerNormal-Bold.ttf')}}");
+        }
 
         .teamname {
             position: absolute;
@@ -112,7 +117,7 @@
             text-align: center;
             width: 146px;
             height: 48px;
-            font-family: 'Inter_ExtraBold';
+            font-family: 'HitmarkerNormal-Bold';
             color: white;
             font-size: 40px;
         }
@@ -147,7 +152,7 @@
             text-align: center;
             width: 113px;
             height: 30px;
-            font-family: 'Inter_SemiBold';
+            font-family: 'HitmarkerNormal-Bold';
             color: white;
             font-size: 25px;
         }
@@ -183,7 +188,7 @@
             text-align: center;
             width: 103px;
             height: 30px;
-            font-family: 'Inter_SemiBold';
+            font-family: 'HitmarkerNormal-Bold';
             color: white;
             font-size: 25px;
         }
@@ -219,12 +224,30 @@
             text-align: center;
             width: 113px;
             height: 30px;
-            font-family: 'Inter_Medium';
+            font-family: 'HitmarkerNormal-Bold';
             color: white;
             font-size: 25px;
         }
 
         .topPointsDiffText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 334px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
+        }
+
+        .topPlace {
             position: absolute;
             z-index: 999;
             text-align: center;
@@ -271,25 +294,25 @@
                 <p style='display:inline' id="players">{{ players[0] }} - {{ players[1] }} - {{ players[2] }}</p> 
             </div>
             {% endif %}
-            <div class='topPointsDiffText' id="topPointsDiffText">
-                <p style='display:inline'>Pts</p> 
-            </div>
             {% if topPoints != 0 %}
                 {% if topPointsDiff|float < 0.0 %}
                     <div class='topPointsDiff' id="topPointsDiff">
-                        <p style='display:inline;color:red'>+{{ topPointsDiff|abs }}</p> 
+                        <p style='display:inline;color:#FF1A41'>-{{ topPointsDiff|abs }}</p> 
                     </div>
                     <div class='indicator' id="indicator">
                         <img  id='indicator' src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
                     </div>
                 {% else %}
                     <div class='topPointsDiff' id="topPointsDiff">
-                        <p style='display:inline;color:green'>+{{ topPointsDiff|abs }}</p> 
+                        <p style='display:inline;color:#52BB26'>+{{ topPointsDiff|abs }}</p> 
                     </div>
                     <div class='indicator' id="indicator">
                         <img id='indicator' src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
                     </div>
                 {% endif %}
+                <div class='topPlace' id="topPlace">
+                    <p style='display:inline'>#{{ topPlace }}</p> 
+                </div>
             {% else %}
                 <div class='topPointsDiff' id="topPointsDiff">
                     <p style='display:inline;'>-</p>
@@ -328,10 +351,10 @@
                         if (jsonResponse['topPoints'] != 0) {
                             if (jsonResponse['topPointsDiff'] < 0) {
                                 document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
-                                document.getElementById("topPointsDiff").style.color = "red" 
+                                document.getElementById("topPointsDiff").style.color = "#FF1A41" 
                             } else {
                                 document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
-                                document.getElementById("topPointsDiff").style.color = "green" 
+                                document.getElementById("topPointsDiff").style.color = "#52BB26" 
                             };
                             document.getElementById("rank").style.top = '22px'
                             document.getElementById("rankText").style.top = '71px'
