@@ -53,10 +53,6 @@ def get_wsow_stats(region,teamname):
 
 def get_wsow_player_stats(player):
     dataout={'topPlace':0,'topPoints':0,'topPointsDiff':0,"kills":0,'backgroundImage':"https://assets.codmunity.gg/optimized/TeamOverlay_Default.webp","IsTeam":"no"}
-    if region.lower() == "eu":
-        region = "emea"
-    elif region.lower() == "global":
-        region = "all"
     url = base_url + f"{player}"
     try: r = requests.get(url,headers=headers,timeout=10)
     except: data = default_data(player)
