@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X32DVJJ3HE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X32DVJJ3HE');
+    </script>
+    <title>WSOW Overlay: {{ teamname }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet"
+        href="{{url_for('static',filename='fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css')}}">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html{
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+
+        .bg_image {
+            position: relative;
+            display: inline-block;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        @font-face {
+            font-family: 'Inter_Regular';
+            src: url("{{url_for('static',filename='fonts/Inter-Regular.ttf')}}");
+        }
+        @font-face {
+            font-family: 'Inter_Medium';
+            src: url("{{url_for('static',filename='fonts/Inter-Medium.ttf')}}");
+        }
+        @font-face {
+            font-family: 'Inter_SemiBold';
+            src: url("{{url_for('static',filename='fonts/Inter-SemiBold.ttf')}}");
+        }
+        @font-face {
+            font-family: 'Inter_ExtraBold';
+            src: url("{{url_for('static',filename='fonts/Inter-ExtraBold.ttf')}}");
+        }
+        @font-face {
+            font-family: 'HitmarkerNormal_Bold';
+            src: url("{{url_for('static',filename='fonts/HitmarkerNormal-Bold.ttf')}}");
+        } 
+        @font-face {
+            font-family: 'HitmarkerNormal_Regular';
+            src: url("{{url_for('static',filename='fonts/HitmarkerNormal-Regular.ttf')}}");
+        }
+
+        .teamname {
+            position: absolute;
+            z-index: 999;
+            text-align: -webkit-center;
+            align-content: center;
+            top: 15px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 323px;
+            height: 27px;
+            font-family: 'Inter_Regular';
+            color: white;
+            font-size: 22px;
+        }
+
+        .players {
+            position: absolute;
+            z-index: 999;
+            text-align: -webkit-left;
+            align-content: center;
+            top: 15px;
+            left: 230px;
+            margin-left: auto; 
+            margin-right: auto;
+            vertical-align: middle;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 470px;
+            height: 56px;
+            font-family: 'Inter_SemiBold';
+            color: white;
+            font-size: 22px;
+        }
+        
+        .rank {
+            position: absolute;
+            z-index: 999;
+            top: 22px;
+            left: 62px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 146px;
+            height: 48px;
+            font-family: 'HitmarkerNormal_Bold';
+            color: white;
+            font-size: 38px;
+        }
+
+        .rankText {
+            position: absolute;
+            z-index: 999;
+            top: 71px;
+            left: 103.5px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 63px;
+            height: 27px;
+            font-family: 'Inter_SemiBold';
+            color: #B8B8B8;
+            font-size: 22px;
+        }
+
+        .points {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 95px;
+            left: 387px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 113px;
+            height: 30px;
+            font-family: 'HitmarkerNormal_Regular';
+            letter-spacing: 2px;
+            color: white;
+            font-size: 25px;
+        }
+
+        .pointsText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 498px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
+        }
+
+        .kills {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 95px;
+            left: 552px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 103px;
+            height: 30px;
+            font-family: 'HitmarkerNormal_Regular';
+            letter-spacing: 2px;
+            color: white;
+            font-size: 25px;
+        }
+
+        .killsText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 653px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
+        }
+
+        .topPointsDiff {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 95px;
+            left: 222px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 109px;
+            height: 30px;
+            font-family: 'HitmarkerNormal_Regular';
+            letter-spacing: 2px;
+            color: white;
+            font-size: 25px;
+        }
+
+        .topPointsDiffText {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 334px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
+        }
+
+        .topPlace {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            top: 99px;
+            left: 330px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 29px;
+            height: 33px;
+            font-family: 'Inter_Regular';
+            color: #D4D4D4;
+            font-size: 19px;
+        }
+
+        .indicator {
+            position: absolute;
+            z-index: 999;
+            top: 103px;
+            left: 84px;
+            width: 102px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <div class="boxx" id="boxx">
+            <div class='rank' id="rank">
+                <p style='display:inline'><b style="font-size:30px;opacity:80%;">#</b>{{ rank }}</p> 
+            </div>
+            <div class='rankText' id="rankText">
+                <p style='display:inline'>RANK</p> 
+            </div>
+            {% if isteam != 'yes' %}
+            <div class='players' id="players">
+                <p style='display:inline' id="players">{{ players[0] }} - {{ players[1] }} - {{ players[2] }}</p> 
+            </div>
+            {% endif %}
+            {% if topPoints != 0 %}
+                {% if topPointsDiff|float < 0.0 %}
+                    <div class='topPointsDiff' id="topPointsDiff">
+                        <p style='display:inline;color:#FF1A41'>-{{ topPointsDiff|abs }}</p> 
+                    </div>
+                    <div class='indicator' id="indicator">
+                        <img  id='indicator' src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
+                    </div>
+                {% else %}
+                    <div class='topPointsDiff' id="topPointsDiff">
+                        <p style='display:inline;color:#52BB26'>+{{ topPointsDiff|abs }}</p> 
+                    </div>
+                    <div class='indicator' id="indicator">
+                        <img id='indicator' src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
+                    </div>
+                {% endif %}
+                <div class='topPlace' id="topPlace">
+                    <p style='display:inline'>#{{ topPlace }}</p> 
+                </div>
+            {% else %}
+                <div class='topPointsDiff' id="topPointsDiff">
+                    <p style='display:inline;'>-</p>
+                </div>
+            {% endif %}
+            <div class='points' id="points">
+                <p style='display:inline'>{{ points }}</p> 
+            </div>
+            <div class='pointsText' id="pointsText">
+                <p style='display:inline'>Pts</p> 
+            </div>
+            <div class='kills' id="kills">
+                <p style='display:inline'>{{ kills }}</p> 
+            </div>
+            <div class='killsText' id="killsText">
+                <p style='display:inline'>Kills</p> 
+            </div>
+        </div>
+        <div class="bg_image" style="z-index:1;">
+            <img src="{{ backgroundImage }}" width="714" style="box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.25)" alt='horizontal-overlay'>
+        </div>
+    </div>
+    <script>
+        function loadData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonResponse = JSON.parse(this.responseText);
+                    if (jsonResponse['version'] != "{{version}}") {
+                        window.location.reload(true)
+                    };
+                    if (jsonResponse['rank'] != -1) {
+                        document.getElementById("rank").innerHTML = '<b style="font-size:30px;opacity:80%;">#</b>' + jsonResponse['rank'];
+                        document.getElementById("points").innerHTML = jsonResponse['points'];
+                        if (jsonResponse['topPoints'] != 0) {
+                            if (jsonResponse['topPointsDiff'] < 0) {
+                                document.getElementById("topPointsDiff").innerHTML = "-" + Math.abs(jsonResponse['topPointsDiff']);
+                                document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}"
+                                document.getElementById("topPointsDiff").style.color = "#FF1A41" 
+                            } else {
+                                document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
+                                document.getElementById("indicator").src = "{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}"
+                                document.getElementById("topPointsDiff").style.color = "#52BB26" 
+                            };
+                            document.getElementById("rank").style.top = '22px'
+                            document.getElementById("rankText").style.top = '71px'
+                        } else {
+                            document.getElementById("topPointsDiff").innerHTML = '-'
+                            if (document.getElementById("indicator")) {
+                                document.getElementById("indicator").style.display = 'none';
+                            };
+                            document.getElementById("rank").style.top = '35px'
+                            document.getElementById("rankText").style.top = '84px'
+                        }
+                        document.getElementById("kills").innerHTML = jsonResponse['kills'];
+                        return;
+                    };
+                };
+            };
+            xhttp.overrideMimeType("application/json");
+            xhttp.open("GET", "/update-wsow-player/{{players[0]}}", true);
+            xhttp.send();
+        } setInterval(loadData, 30000);
+    </script>
+    <script>
+        window.addEventListener("load", (event) => {
+            if ("{{topPoints}}" == 0) {
+                document.getElementById("rank").style.top = '35px'
+                document.getElementById("rankText").style.top = '84px'
+            };
+        });
+    </script>
+    <!-- <script>
+        const getSize = (textLength, size, length) => {
+            const baseSize = size
+            const baseLength = length
+            if (baseLength < textLength) {
+                fontSize = baseSize - (textLength - baseLength)
+                topDist = 10 + 2*(textLength - baseLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            } else if (baseLength > textLength) {
+                fontSize = baseSize + (baseLength - textLength)
+                topDist = 10 - 2*(baseLength - textLength) + 5
+                return [`${fontSize}px`, `${topDist}px`]
+            };
+        };
+        const boxest = document.querySelectorAll('.players p')
+        boxest.forEach(boxt => {
+            var newSize = getSize(boxt.textContent.length, 22, 37)
+            document.getElementById("players").style.fontSize = newSize[0]
+        });
+    </script> -->
+</body>
+
+</html>

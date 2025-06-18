@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from src.stats import get_ranked_stats
 from src.camo import get_camo_stats, get_new_camo_stats
-from src.wsow import get_wsow_stats
+from src.wsow import get_wsow_stats, get_wsow_player_stats
 from turbo_flask import Turbo
 import threading
 import time
@@ -80,6 +80,15 @@ def wsow(region: str,teamname: str):
     else:
         return render_template("error.html")
     
+@app.route("/wsow/<player>", methods=['GET'])
+def wsow_player(region: str,teamname: str):
+    path_file = f"wsow/english/HORIZONTAL-STATIC-2025-PLAYER.html"
+    data = get_wsow_stats(region,teamname)
+    if exists("./templates/"+path_file):
+        return render_template(path_file, version=version, backgroundImage=data['backgroundImage'], teamname=str(data['teamName'].strip()), isteam=data['IsTeam'], players=data['players'], rank=data['rank'], points=data['points'], kills=data['kills'], topPlace=data['topPlace'], topPoints=data['topPoints'], topPointsDiff=data['topPointsDiff'], region=region, textnote=text)
+    else:
+        return render_template("error.html")
+    
 @app.route("/test/wsow/<region>/<teamname>", methods=['GET'])
 def wsow_test(region: str,teamname: str):
     path_file = f"wsow/english/HORIZONTAL-STATIC-2025.html"
@@ -123,5 +132,12 @@ def wsow_data(region: str,teamname: str):
     data['version'] = version
     return data
 
+@app.route("/update-wsow-player/<player>", methods=['GET'])
+def wsow_player_data(player: str):
+    data = get_wsow_player_stats(player)
+    data['version'] = version
+    return data
+
 app = WsgiToAsgi(app)
+
 # ALWAYS CHANGE THIS BACK!!!!!
