@@ -41,7 +41,10 @@ def get_wsow_stats(region,teamname):
     except: dataout['kills']=0
     try: dataout['IsTeam']=data['IsTeam']
     except: dataout['IsTeam']="no"
-    dataout['points']=round(data['points'],1)
+    if data['points'] < 1000:
+        dataout['points']=round(data['points'],1)
+    else:
+        dataout['points']=round(data['points'])
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = data['qualifyingThreshold']
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
@@ -74,7 +77,10 @@ def get_wsow_player_stats(player):
     except: dataout['kills']=0
     try: dataout['IsTeam']=data['IsTeam']
     except: dataout['IsTeam']="no"
-    dataout['points']=round(data['points'],1)
+    if data['points'] < 1000:
+        dataout['points']=round(data['points'],1)
+    else:
+        dataout['points']=round(data['points'])
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = data['qualifyingThreshold']
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
