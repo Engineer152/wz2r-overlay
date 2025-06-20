@@ -45,7 +45,7 @@ def get_wsow_stats(region,teamname):
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = data['qualifyingThreshold']
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
-        dataout['topPointsDiff']=round(data['points'] - data['lastQualifyingTeamPoints'],1)
+        dataout['topPointsDiff']=round(data['points'] - data['lastQualifyingTeamPoints'])
     if 'backgroundImage' in data:
         if validators.url(data['backgroundImage']):
             dataout['backgroundImage'] = data['backgroundImage']
@@ -78,7 +78,7 @@ def get_wsow_player_stats(player):
     if 'qualifyingThreshold' in data:
         dataout['topPlace'] = data['qualifyingThreshold']
         dataout['topPoints'] = data['lastQualifyingTeamPoints']
-        dataout['topPointsDiff']=round(data['points'] - data['lastQualifyingTeamPoints'],1)
+        dataout['topPointsDiff']=round(data['points'] - data['lastQualifyingTeamPoints'])
     if 'backgroundImage' in data:
         if validators.url(data['backgroundImage']):
             dataout['backgroundImage'] = data['backgroundImage']
