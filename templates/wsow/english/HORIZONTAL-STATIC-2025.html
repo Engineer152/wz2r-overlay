@@ -388,26 +388,6 @@
             };
         });
     </script>
-    <!-- <script>
-        const getSize = (textLength, size, length) => {
-            const baseSize = size
-            const baseLength = length
-            if (baseLength < textLength) {
-                fontSize = baseSize - (textLength - baseLength)
-                topDist = 10 + 2*(textLength - baseLength) + 5
-                return [`${fontSize}px`, `${topDist}px`]
-            } else if (baseLength > textLength) {
-                fontSize = baseSize + (baseLength - textLength)
-                topDist = 10 - 2*(baseLength - textLength) + 5
-                return [`${fontSize}px`, `${topDist}px`]
-            };
-        };
-        const boxest = document.querySelectorAll('.players p')
-        boxest.forEach(boxt => {
-            var newSize = getSize(boxt.textContent.length, 22, 37)
-            document.getElementById("players").style.fontSize = newSize[0]
-        });
-    </script> -->
 </body>
 
 </html>
