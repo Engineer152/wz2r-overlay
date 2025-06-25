@@ -287,6 +287,7 @@
             left: 84px;
             width: 102px;
             height: 29px;
+            line-height: 29px;
             font-family: 'Inter_ExtraBold';
             text-align: center;
             color: #131313;
@@ -321,9 +322,6 @@
                     <div class='topPointsDiff' id="topPointsDiff">
                         <p style='display:inline;color:#FF1A41'>-{{ topPointsDiff|abs }}</p> 
                     </div>
-                    <!-- <div class='indicator' id="indicator">
-                        <img  id='indicator' src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
-                    </div> -->
                     <div class='indicatorText' id="indicatorText" style="background-color:#FF1A41;">
                         <p style='display:inline'>Not Qualified</p> 
                     </div>
@@ -331,9 +329,6 @@
                     <div class='topPointsDiff' id="topPointsDiff">
                         <p style='display:inline;color:#52BB26'>+{{ topPointsDiff|abs }}</p> 
                     </div>
-                    <!-- <div class='indicator' id="indicator">
-                        <img id='indicator' src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
-                    </div> -->
                     <div class='indicatorText' id="indicatorText" style="background-color:#52BB26;">
                         <p style='display:inline'>On Track</p> 
                     </div>
@@ -378,13 +373,11 @@
                         if (jsonResponse['topPoints'] != 0) {
                             if (jsonResponse['topPointsDiff'] < 0) {
                                 document.getElementById("topPointsDiff").innerHTML = "-" + Math.abs(jsonResponse['topPointsDiff']);
-                                // document.getElementById("indicator").innerHTML = `<img  id="indicator" src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED">`
                                 document.getElementById("indicatorText").innerHTML = `<p style='display:inline'>Not Qualified</p>`
                                 document.getElementById("indicatorText").style.backgroundColor = "#FF1A41"
                                 document.getElementById("topPointsDiff").style.color = "#FF1A41" 
                             } else {
                                 document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
-                                // document.getElementById("indicator").innerHTML = `<img id="indicator" src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK">`
                                 document.getElementById("indicatorText").innerHTML = `<p style='display:inline'>On Track</p>`
                                 document.getElementById("indicatorText").style.backgroundColor = "#52BB26"
                                 document.getElementById("topPointsDiff").style.color = "#52BB26" 

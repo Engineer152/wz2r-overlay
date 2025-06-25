@@ -280,6 +280,26 @@
             margin-bottom: auto;
         }
 
+        .indicatorText {
+            position: absolute;
+            z-index: 999;
+            top: 103px;
+            left: 84px;
+            width: 102px;
+            height: 29px;
+            line-height: 29px;
+            font-family: 'Inter_ExtraBold';
+            text-align: center;
+            color: #131313;
+            font-size: 14px;
+            margin-left: auto; 
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            background-color: #52BB26;
+            border-radius: 4px;
+        }
+
     </style>
 </head>
 
@@ -302,15 +322,15 @@
                     <div class='topPointsDiff' id="topPointsDiff">
                         <p style='display:inline;color:#FF1A41'>-{{ topPointsDiff|abs }}</p> 
                     </div>
-                    <div class='indicator' id="indicator">
-                        <img  id='indicator' src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED"> 
+                    <div class='indicatorText' id="indicatorText" style="background-color:#FF1A41;">
+                        <p style='display:inline'>Not Qualified</p> 
                     </div>
                 {% else %}
                     <div class='topPointsDiff' id="topPointsDiff">
                         <p style='display:inline;color:#52BB26'>+{{ topPointsDiff|abs }}</p> 
                     </div>
-                    <div class='indicator' id="indicator">
-                        <img id='indicator' src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK"> 
+                    <div class='indicatorText' id="indicatorText" style="background-color:#52BB26;">
+                        <p style='display:inline'>On Track</p> 
                     </div>
                 {% endif %}
                 <div class='topPlace' id="topPlace">
@@ -353,19 +373,21 @@
                         if (jsonResponse['topPoints'] != 0) {
                             if (jsonResponse['topPointsDiff'] < 0) {
                                 document.getElementById("topPointsDiff").innerHTML = "-" + Math.abs(jsonResponse['topPointsDiff']);
-                                document.getElementById("indicator").innerHTML = `<img  id="indicator" src="{{url_for('static',filename='files/WSOW_NOT_QUALIFIED.png')}}" width="102" alt="NOT QUALIFIED">`
+                                document.getElementById("indicatorText").innerHTML = `<p style='display:inline'>Not Qualified</p>`
+                                document.getElementById("indicatorText").style.backgroundColor = "#FF1A41"
                                 document.getElementById("topPointsDiff").style.color = "#FF1A41" 
                             } else {
                                 document.getElementById("topPointsDiff").innerHTML = "+" + Math.abs(jsonResponse['topPointsDiff']);
-                                document.getElementById("indicator").innerHTML = `<img id="indicator" src="{{url_for('static',filename='files/WSOW_ON_TRACK.png')}}" width="102" alt="ON TRACK">`
+                                document.getElementById("indicatorText").innerHTML = `<p style='display:inline'>On Track</p>`
+                                document.getElementById("indicatorText").style.backgroundColor = "#52BB26"
                                 document.getElementById("topPointsDiff").style.color = "#52BB26" 
                             };
                             document.getElementById("rank").style.top = '22px'
                             document.getElementById("rankText").style.top = '71px'
                         } else {
                             document.getElementById("topPointsDiff").innerHTML = '-'
-                            if (document.getElementById("indicator")) {
-                                document.getElementById("indicator").style.display = 'none';
+                            if (document.getElementById("indicatorText")) {
+                                document.getElementById("indicatorText").style.display = 'none';
                             };
                             document.getElementById("rank").style.top = '35px'
                             document.getElementById("rankText").style.top = '84px'
